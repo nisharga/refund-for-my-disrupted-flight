@@ -1,0 +1,2 @@
+global context calling from here.
+we use state managment from here

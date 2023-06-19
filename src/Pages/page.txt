@@ -1,0 +1,2 @@
+this is page folder
+from route we call our pages. which wil store here
