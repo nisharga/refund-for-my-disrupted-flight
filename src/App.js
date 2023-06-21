@@ -1,12 +1,9 @@
-import SignIn from "./Components/SignIn/SignIn";
-import SignUp from "./Components/SignUp/SignUp";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/router";
+
 function App() {
-  return (
-    <div className="App">
-      <h1>This is default app</h1>
-      <SignIn></SignIn>
-      <SignUp></SignUp>
-    </div>
+  return (   
+  <RouterProvider router={router}></RouterProvider> 
   );
 }
 
