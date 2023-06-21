@@ -41,8 +41,8 @@ const SignUp = () => {
   return (
     <div className="block items-center mx-10 ">
       <div className="p-10 block lg:w-8/12 lg:mx-auto rounded-md my-10 bg-[#e8eef1]">
-        <div className="flex items-center justify-between text-lg font-semibold text-[#0d3073]">
-          <p>Register</p>
+        <div className="flex items-center justify-between text-lg font-semibold text-[#0d3073] ">
+          <p className="text-xl">Register</p>
         </div>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <input
@@ -95,7 +95,7 @@ const SignUp = () => {
         </div>
         <div className="flex justify-center text-white gap-5">
           <button className="bg-blue-500  hover:bg-blue-400 duration-300 py-2 w-1/2 rounded-md">
-            facebook{" "}
+            Facebook{" "}
           </button>
           <button
             onClick={handleGoogleSignIn}

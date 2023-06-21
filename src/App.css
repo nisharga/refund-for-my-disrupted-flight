@@ -1,1 +1,11 @@
 /* this is app.css */
+.mono-font {
+  font-family: "Roboto Mono", monospace;
+}
+
+.title {
+  font-size: 3.75rem;
+  font-weight: bolder;
+  font-family: "Open Sans", sans-serif;
+  color: #ccd6f6;
+}

@@ -84,7 +84,7 @@ const SignIn = () => {
         </div>
         <div className="flex justify-center text-white gap-5">
           <button className="bg-blue-500  hover:bg-blue-400 duration-300 py-2 w-1/2 rounded-md">
-            facebook{" "}
+            Facebook{" "}
           </button>
           <button
             onClick={handleGoogleSignIn}
