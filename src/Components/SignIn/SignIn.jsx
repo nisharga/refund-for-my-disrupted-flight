@@ -72,7 +72,7 @@ const SignIn = () => {
           />
           <button
             type="submit"
-            className="w-full my-5 py-2 text-white rounded-md bg-[#0d73ff]"
+            className="w-full my-5 py-2 text-white rounded-md bg-blue-500  hover:bg-blue-400 duration-300"
           >
             {loading ? "loading.." : "Login"}
           </button>
@@ -83,12 +83,12 @@ const SignIn = () => {
           <div className="bg-gray-400  w-full h-[1px]"></div>
         </div>
         <div className="flex justify-center text-white gap-5">
-          <button className="bg-blue-500 py-2 w-1/2 rounded-md">
+          <button className="bg-blue-500  hover:bg-blue-400 duration-300 py-2 w-1/2 rounded-md">
             facebook{" "}
           </button>
           <button
             onClick={handleGoogleSignIn}
-            className="bg-red-500 py-2 w-1/2 rounded-md "
+            className="bg-red-500  hover:bg-red-400 duration-300 py-2 w-1/2 rounded-md "
           >
             Google{" "}
           </button>

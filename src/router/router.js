@@ -13,7 +13,7 @@ import Main from "../layout/Main";
                 element:<SignIn/>
             },
             {
-                path:"/regiter",
+                path:"/register",
                 element:<SignUp/>
             }
         ]
