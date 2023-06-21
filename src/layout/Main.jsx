@@ -5,13 +5,15 @@ import Navbar from "../utls/Navbar/Navbar";
 
 const Main = () => {
   return (
-    <div className="flex">
-      <div className="hidden lg:block lg:w-1/4 bg-gray-200 h-screen">
-        <Sidebar />
-      </div>
-      <div className="w-full lg:w-3/4  bg-white">
-        <Navbar />
-        <Outlet />
+    <div>
+      <div className="flex relative">
+        <div className="hidden lg:block lg:w-[30%] bg-[#e8eef1] h-screen sticky top-0">
+          <Sidebar />
+        </div>
+        <div className="w-full lg:w-[70%]  bg-white">
+          <Navbar />
+          <Outlet />
+        </div>
       </div>
     </div>
   );
