@@ -42,7 +42,7 @@ const SignUp = () => {
     <div className="block items-center mx-10 ">
       <div className="p-10 block lg:w-8/12 lg:mx-auto rounded-md my-10 bg-[#e8eef1]">
         <div className="flex items-center justify-between text-lg font-semibold text-[#0d3073] ">
-          <p className="text-xl">Register</p>
+          <p className="text-xl">Register RRRRR</p>
         </div>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <input
