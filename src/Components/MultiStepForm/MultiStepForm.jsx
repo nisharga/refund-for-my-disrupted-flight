@@ -60,7 +60,7 @@ const MultiStepForm = () => {
               onClick={handleNext}
               disabled
             >
-              Next
+              Next Button
             </button>
           )}
         </div>
