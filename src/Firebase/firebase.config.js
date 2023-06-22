@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDeRGq3ePCPTr9IlefHVkJiorjlqZVnB0U",
-  authDomain: "refund-my-disrupt-flight.firebaseapp.com",
-  projectId: "refund-my-disrupt-flight",
-  storageBucket: "refund-my-disrupt-flight.appspot.com",
-  messagingSenderId: "556200466128",
-  appId: "1:556200466128:web:70907af94ca3fc604ff0d5"
+  apiKey:  process.env.REACT_APP_apiKey,
+  authDomain:  process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
