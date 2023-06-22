@@ -1,0 +1,1 @@
+all image or global css file calling from here
