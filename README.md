@@ -40,7 +40,36 @@ Then commit by what you have done
  git push -u origin YourName
 ```
 
-After submit the code, create pull request for development branch
+You have Sucessfully Push your code to your branch...
+Now delivery it to development branch. So that anyone can use it.
+(what happend here? after entered development,
+you said marge my code to development)
+
+```bash
+ git checkout development
+ git merge YOUR_BRANCH_NAME development
+```
+
+Now You have to give a commit so that everyone can see it.
+
+```bash
+ git add .
+ git commit -m "[done] YOUR_BRANCH_NAME code send to development"
+ git push -u origin YourName
+```
+
+DONE DONE DONE, You have done everything. Now go to bed and take rest.
+
+My PRO-Coder-Frined coding all night. And push it to development branch.
+How i get the code now?
+
+Enter your branch and give this code
+
+```bash
+git pull origin development
+```
+
+IF you get your friends code. Then take a glass of water and start codeing.
 
 ## 🔗 Project Management Tool
 
