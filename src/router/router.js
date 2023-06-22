@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import MultiStepForm from "../Components/MultiStepForm/MultiStepForm";
 import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
 import Main from "../layout/Main";
@@ -8,6 +9,10 @@ import Main from "../layout/Main";
         path:"/",
         element:<Main/>,
         children:[
+            {
+                path:"/",
+                element : <MultiStepForm/>
+            },
             {
                 path:"/login",
                 element:<SignIn/>
