@@ -17,6 +17,7 @@ const MultiStepForm = () => {
   };
 
   console.log(formData?.name);
+  console.log(formData?.email);
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -56,9 +57,13 @@ const MultiStepForm = () => {
           )}
           {step < 2 && (
             <button
-              className="bg-blue-500 px-6 py-1.5 rounded-lg text-white hover:bg-blue-600"
+              className={`${
+                formData?.name &&
+                formData?.email &&
+                "bg-blue-500 hover:bg-blue-600 "
+              } bg-blue-300 px-6 py-1.5 rounded-lg text-white `}
               onClick={handleNext}
-              disabled
+              disabled={!formData?.name && !formData?.email}
             >
               Next Button
             </button>
@@ -93,8 +98,9 @@ const Step1 = ({ setFormData, formData }) => (
         type="email"
         id="email"
         name="email"
+        value={formData?.email}
         className="w-full border border-gray-400 p-2"
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
       />
     </div>
   </div>
