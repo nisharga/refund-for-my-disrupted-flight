@@ -65,7 +65,7 @@ const MultiStepForm = () => {
               onClick={handleNext}
               disabled={!formData?.name && !formData?.email}
             >
-              Next Button
+              Next Button is fire
             </button>
           )}
         </div>
