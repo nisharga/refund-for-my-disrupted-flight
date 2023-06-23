@@ -1,2 +1,0 @@
-this is shared folder
-here all shared file will store like header / footer / sidebar parts
