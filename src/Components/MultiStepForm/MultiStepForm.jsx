@@ -1,11 +1,19 @@
 import { useState } from "react";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    airLineName: "",
+    flightNumber: "",
+    dateOfDisruption: "",
+    reasonForDisruption: "",
+    boardingPassNumber: "",
+    boardingPassDate: "",
+    isRecipts: "no",
+    emailSummary: "",
+    messageSumamry: "",
   });
 
   const handleNext = () => {
@@ -16,14 +24,15 @@ const MultiStepForm = () => {
     setStep(step - 1);
   };
 
-  const handlesubmit = (e) => {
+  const onSubmitFormData = (e) => {
     e.preventDefault();
     console.log(formData);
   };
 
+  console.log(formData?.airLineName);
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full lg:max-w-xl">
+    <div className="block mx-auto">
+      <div className="p-6 w-full lg:w-10/12 mx-auto">
         <h2 className="text-lg font-medium mb-4">Step {step} of 2</h2>
         <div className="flex mb-4">
           <div
@@ -37,7 +46,7 @@ const MultiStepForm = () => {
             } p-2 text-center cursor-pointer`}
             onClick={() => setStep(1)}
           >
-            Step 1
+            Step 1 test
           </div>
           <div
             className={`w-1/2 ${
@@ -64,7 +73,7 @@ const MultiStepForm = () => {
               </button>
 
               {formData?.name && formData?.email && formData?.password && (
-                <form onSubmit={handlesubmit}>
+                <form onSubmit={onSubmitFormData}>
                   <button
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
@@ -94,58 +103,25 @@ const MultiStepForm = () => {
   );
 };
 
-const Step1 = ({ setFormData, formData }) => (
-  <div>
-    <h3 className="text-lg font-medium mb-4">Step 1</h3>
-    <div className="mb-4">
-      <label className="block font-medium mb-2 text-gray-700" htmlFor="name">
-        Name
-      </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value={formData?.name}
-        className="w-full border border-gray-400 p-2"
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-      />
-    </div>
-    <div className="mb-4">
-      <label className="block font-medium mb-2 text-gray-700" htmlFor="email">
-        Email
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={formData?.email}
-        className="w-full border border-gray-400 p-2"
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-      />
-    </div>
-  </div>
-);
-
-const Step2 = ({ setFormData, formData }) => (
-  <div>
-    <h3 className="text-lg font-medium mb-4">Step 2</h3>
-    <div className="mb-4">
-      <label
-        className="block font-medium mb-2 text-gray-700"
-        htmlFor="password"
-      >
-        Password
-      </label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        className="w-full border border-gray-400 p-2"
-        value={formData?.password}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-      />
-    </div>
-  </div>
-);
+// const Step2 = ({ setFormData, formData }) => (
+//   <div>
+//     <div className="mb-4">
+//       <label
+//         className="block font-medium mb-2 text-gray-700"
+//         htmlFor="password"
+//       >
+//         Password
+//       </label>
+//       <input
+//         type="password"
+//         id="password"
+//         name="password"
+//         className="w-full border border-gray-400 p-2"
+//         value={formData?.password}
+//         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+//       />
+//     </div>
+//   </div>
+// );
 
 export default MultiStepForm;
