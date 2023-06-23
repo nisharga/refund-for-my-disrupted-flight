@@ -4,6 +4,7 @@ import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
 import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Result from "../Components/Result/Result";
 
  export const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
             {
                 path:"/",
                 element : <PrivateRoute><MultiStepForm/></PrivateRoute>
+            },
+            {
+                path:"/result",
+                element : <PrivateRoute><Result/></PrivateRoute>
             },
             {
                 path:"/login",
