@@ -16,8 +16,10 @@ const MultiStepForm = () => {
     setStep(step - 1);
   };
 
-  console.log(formData?.name);
-  console.log(formData?.email);
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -26,7 +28,12 @@ const MultiStepForm = () => {
         <div className="flex mb-4">
           <div
             className={`w-1/2 border-r border-gray-400 ${
-              step === 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+              step === 1
+                ? "bg-blue-500 text-white"
+                : formData?.name && formData?.email
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200"
+            } ? 
             } p-2 text-center cursor-pointer`}
             onClick={() => setStep(1)}
           >
@@ -44,24 +51,37 @@ const MultiStepForm = () => {
         {step === 1 ? (
           <Step1 setFormData={setFormData} formData={formData} />
         ) : (
-          <Step2 />
+          <Step2 setFormData={setFormData} formData={formData} />
         )}
         <div className="flex justify-between mt-6">
           {step > 1 && (
-            <button
-              className="bg-gray-300 px-6 py-1.5 rounded-lg text-gray-700 hover:bg-gray-400"
-              onClick={handleBack}
-            >
-              Back is not back to back cblll
-            </button>
+            <>
+              <button
+                className="bg-gray-300 px-6 py-1.5 rounded-lg text-gray-700 hover:bg-gray-400"
+                onClick={handleBack}
+              >
+                Back is not back to back cblll
+              </button>
+
+              {formData?.name && formData?.email && formData?.password && (
+                <form onSubmit={handlesubmit}>
+                  <button
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
+                  >
+                    Submit Data
+                  </button>
+                </form>
+              )}
+            </>
           )}
           {step < 2 && (
             <button
               className={`${
-                formData?.name &&
-                formData?.email &&
-                "bg-blue-500 hover:bg-blue-600 "
-              } bg-blue-300 px-6 py-1.5 rounded-lg text-white `}
+                formData?.name && formData?.email
+                  ? "bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
+                  : "bg-blue-300 px-6 py-1.5 rounded-lg text-white"
+              }`}
               onClick={handleNext}
               disabled={!formData?.name && !formData?.email}
             >
@@ -106,7 +126,7 @@ const Step1 = ({ setFormData, formData }) => (
   </div>
 );
 
-const Step2 = () => (
+const Step2 = ({ setFormData, formData }) => (
   <div>
     <h3 className="text-lg font-medium mb-4">Step 2</h3>
     <div className="mb-4">
@@ -121,6 +141,8 @@ const Step2 = () => (
         id="password"
         name="password"
         className="w-full border border-gray-400 p-2"
+        value={formData?.password}
+        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
       />
     </div>
   </div>
