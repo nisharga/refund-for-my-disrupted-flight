@@ -1,2 +1,0 @@
-small small components make a page that
-we will struture our components folder by page name
