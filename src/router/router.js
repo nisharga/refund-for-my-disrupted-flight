@@ -3,6 +3,7 @@ import MultiStepForm from "../Components/MultiStepForm/MultiStepForm";
 import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
 import Main from "../layout/Main";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
  export const router = createBrowserRouter([
     {
@@ -11,7 +12,7 @@ import Main from "../layout/Main";
         children:[
             {
                 path:"/",
-                element : <MultiStepForm/>
+                element : <PrivateRoute><MultiStepForm/></PrivateRoute>
             },
             {
                 path:"/login",
