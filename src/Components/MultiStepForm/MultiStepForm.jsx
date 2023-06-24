@@ -96,18 +96,24 @@ const MultiStepForm = () => {
               className={`${
                 formData?.airLineName &&
                 formData?.flightNumber &&
-                formData?.dateOfDisruption
-                  ? "bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
-                  : "bg-blue-300 px-6 py-1.5 rounded-lg text-white"
+                formData?.dateOfDisruption &&
+                formData?.reasonForDisruption &&
+                formData?.boardingPassNumber &&
+                formData?.boardingPassDate
+                  ? "bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg text-white"
+                  : "bg-blue-300 px-8 py-3 rounded-lg text-white cursor-not-allowed"
               }`}
               onClick={handleNext}
               disabled={
-                !formData?.airLineName &&
-                !formData?.flightNumber &&
-                !formData?.dateOfDisruption
+                formData?.airLineName === "" &&
+                formData?.flightNumber === "" &&
+                formData?.dateOfDisruption === "" &&
+                formData?.reasonForDisruption === "" &&
+                formData?.boardingPassNumber === "" &&
+                formData?.boardingPassDate === ""
               }
             >
-              Next Button is fire
+              Next
             </button>
           )}
         </div>

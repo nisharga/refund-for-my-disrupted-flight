@@ -30,7 +30,7 @@ const Step1 = ({ setFormData, formData }) => {
   };
 
   return (
-    <div className="transition-opacity  transform duration-500">
+    <div className="transition-opacity transform duration-500">
       {/* airline details */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
@@ -44,7 +44,7 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Flight Name
             </label>
-            <div className="p-2 border w-full bg-white  mx-auto border-gray-400 rounded flex justify-end items-center h-10">
+            <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
               <MdFlight className="text-gray-400 text-lg" />
               <input
                 type="text"
@@ -54,6 +54,7 @@ const Step1 = ({ setFormData, formData }) => {
                 onChange={(e) =>
                   setFormData({ ...formData, airLineName: e.target.value })
                 }
+                required
               />
             </div>
           </div>
@@ -64,16 +65,22 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Flight Number
             </label>
-            <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
+            <div
+              className={`p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
+            >
               <RxIdCard className="text-gray-400 text-lg" />
               <input
                 type="text"
-                className="ml-1 w-full border-none outline-none"
+                readOnly={!formData?.airLineName}
+                className={`ml-1 w-full border-none outline-none ${
+                  !formData?.airLineName && "cursor-not-allowed"
+                }`}
                 placeholder="e.g DA-123"
                 value={formData?.flightNumber}
                 onChange={(e) =>
                   setFormData({ ...formData, flightNumber: e.target.value })
                 }
+                required
               />
             </div>
           </div>
@@ -89,17 +96,22 @@ const Step1 = ({ setFormData, formData }) => {
             <div className="bg-white flex items-center p-2 border border-gray-400 rounded">
               <MdOutlineDateRange className="text-gray-400 text-lg" />
               <DatePicker
-                className="ml-1 w-full border-none outline-none "
+                readOnly={!formData?.airLineName}
+                disabled={!formData?.airLineName}
+                className={`ml-1 w-full border-none outline-none ${
+                  !formData?.flightNumber && "cursor-not-allowed"
+                }`}
                 selected={disruptionDate}
                 onChange={handleDisruptionDate}
                 placeholderText="MM/DD/YYYY"
+                required
               />
             </div>
           </div>
         </div>
       </div>
 
-      {/* baording pass details fild */}
+      {/* boarding pass details fild */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
           Disruption Reason and Boarding Pass Details
@@ -114,7 +126,7 @@ const Step1 = ({ setFormData, formData }) => {
               Reason for Disruption
             </label>
             <div
-              className="w-full p-3  bg-white  mx-auto border border-gray-400 rounded flex justify-end items-center h-10 "
+              className="w-full p-3 bg-white mx-auto border border-gray-400 rounded flex justify-end items-center h-10"
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -122,15 +134,15 @@ const Step1 = ({ setFormData, formData }) => {
                 })
               }
             >
-              <select className="w-full outline-none  border-gray-400">
+              <select className="w-full outline-none border-gray-400" required>
                 <option defaultValue="nothing" disabled selected>
                   Select a Disruption Reason
                 </option>
-                <option value="US" defaultValue="cananada">
+                <option value="US" defaultValue="canada">
                   United States
                 </option>
-                <option value="dealy">Dealy</option>
-                <option value="cancelation">Cancelation</option>
+                <option value="delay">Delay</option>
+                <option value="cancellation">Cancellation</option>
                 <option value="overbooking">Overbooking</option>
               </select>
             </div>
@@ -144,7 +156,7 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Boarding Pass Number
             </label>
-            <div className="p-2 border w-full bg-white  mx-auto border-gray-400 rounded flex justify-end items-center h-10">
+            <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
               <MdOutlineCardTravel className="text-gray-400 text-lg" />
               <input
                 type="text"
@@ -157,6 +169,7 @@ const Step1 = ({ setFormData, formData }) => {
                     boardingPassNumber: e.target.value,
                   })
                 }
+                required
               />
             </div>
           </div>
@@ -170,10 +183,11 @@ const Step1 = ({ setFormData, formData }) => {
             <div className="bg-white flex items-center p-2 border border-gray-400 rounded">
               <MdOutlineDateRange className="text-gray-400 text-lg" />
               <DatePicker
-                className="ml-1 w-full border-none outline-none "
+                className="ml-1 w-full border-none outline-none"
                 selected={boardingPassDate}
                 onChange={handleBoardingPassDate}
                 placeholderText="MM/DD/YYYY"
+                required
               />
             </div>
           </div>
