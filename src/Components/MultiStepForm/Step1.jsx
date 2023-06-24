@@ -2,26 +2,32 @@ import { format } from "date-fns";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { MdFlight, MdOutlineDateRange } from "react-icons/md";
+import {
+  MdFlight,
+  MdOutlineCardTravel,
+  MdOutlineDateRange,
+} from "react-icons/md";
 import { RxIdCard } from "react-icons/rx";
 
 const Step1 = ({ setFormData, formData }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [disruptionDate, setDisruptionDate] = useState(null);
+  const [boardingPassDate, setSetBoardingPassDate] = useState(null);
   //   const [selectReason, setSelectReson] = useState("");
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleDisruptionDate = (date) => {
+    setDisruptionDate(date);
     setFormData({
       ...formData,
       dateOfDisruption: format(date, "PP"),
     });
   };
-
-  //   const handleSelectChange = (event) => {
-  //     const selectedOption = event.target.value;
-  //     setSelectReson(selectedOption);
-  //     console.log("Selected value:", selectedOption);
-  //   };
+  const handleBoardingPassDate = (date) => {
+    setSetBoardingPassDate(date);
+    setFormData({
+      ...formData,
+      boardingPassDate: format(date, "PP"),
+    });
+  };
 
   return (
     <div className="transition-opacity  transform duration-500">
@@ -84,8 +90,8 @@ const Step1 = ({ setFormData, formData }) => {
               <MdOutlineDateRange className="text-gray-400 text-lg" />
               <DatePicker
                 className="ml-1 w-full border-none outline-none "
-                selected={selectedDate}
-                onChange={handleDateChange}
+                selected={disruptionDate}
+                onChange={handleDisruptionDate}
                 placeholderText="MM/DD/YYYY"
               />
             </div>
@@ -98,16 +104,17 @@ const Step1 = ({ setFormData, formData }) => {
         <h4 className="font-medium mb-2 text-lg text-gray-700">
           Disruption Reason and Boarding Pass Details
         </h4>
-        <div className="grid grid-cols-1 items-center gap-3 my-5">
+        {/* reason for disruption*/}
+        <div className="grid grid-cols-1 items-center gap-3 my-5 ">
           <div>
             <label
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Date of Disruption
+              Reason for Disruption
             </label>
             <div
-              className="w-full p-3  bg-white  mx-auto border-gray-400 rounded flex justify-end items-center h-10 "
+              className="w-full p-3  bg-white  mx-auto border border-gray-400 rounded flex justify-end items-center h-10 "
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -115,7 +122,7 @@ const Step1 = ({ setFormData, formData }) => {
                 })
               }
             >
-              <select className="w-full outline-none">
+              <select className="w-full outline-none  border-gray-400">
                 <option defaultValue="nothing" disabled selected>
                   Select a Disruption Reason
                 </option>
@@ -135,17 +142,20 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Flight Name
+              Boarding Pass Number
             </label>
             <div className="p-2 border w-full bg-white  mx-auto border-gray-400 rounded flex justify-end items-center h-10">
-              <MdFlight className="text-gray-400 text-lg" />
+              <MdOutlineCardTravel className="text-gray-400 text-lg" />
               <input
                 type="text"
                 className="ml-1 w-full border-none outline-none"
-                placeholder="e.g Delta Airliens"
-                value={formData?.airLineName}
+                placeholder="e.g AC658"
+                value={formData?.boardingPassNumber}
                 onChange={(e) =>
-                  setFormData({ ...formData, airLineName: e.target.value })
+                  setFormData({
+                    ...formData,
+                    boardingPassNumber: e.target.value,
+                  })
                 }
               />
             </div>
@@ -155,18 +165,15 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Flight Number
+              Boarding Pass Date
             </label>
-            <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
-              <RxIdCard className="text-gray-400 text-lg" />
-              <input
-                type="text"
-                className="ml-1 w-full border-none outline-none"
-                placeholder="e.g DA-123"
-                value={formData?.flightNumber}
-                onChange={(e) =>
-                  setFormData({ ...formData, flightNumber: e.target.value })
-                }
+            <div className="bg-white flex items-center p-2 border border-gray-400 rounded">
+              <MdOutlineDateRange className="text-gray-400 text-lg" />
+              <DatePicker
+                className="ml-1 w-full border-none outline-none "
+                selected={boardingPassDate}
+                onChange={handleBoardingPassDate}
+                placeholderText="MM/DD/YYYY"
               />
             </div>
           </div>
