@@ -4,6 +4,7 @@ import Step2 from "./Step2";
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
+  // const [disruptionDate, setDisruptionDate] = useState("");
   const [formData, setFormData] = useState({
     airLineName: "",
     flightNumber: "",
@@ -29,7 +30,8 @@ const MultiStepForm = () => {
     console.log(formData);
   };
 
-  console.log(formData?.airLineName);
+  console.log(formData?.reasonForDisruption);
+
   return (
     <div className="block mx-auto">
       <div className="p-6 w-full lg:w-10/12 mx-auto">
@@ -58,7 +60,12 @@ const MultiStepForm = () => {
           </div>
         </div>
         {step === 1 ? (
-          <Step1 setFormData={setFormData} formData={formData} />
+          <Step1
+            setFormData={setFormData}
+            formData={formData}
+            // setDisruptionDate={setDisruptionDate}
+            // disruptionDate={disruptionDate}
+          />
         ) : (
           <Step2 setFormData={setFormData} formData={formData} />
         )}
@@ -87,12 +94,18 @@ const MultiStepForm = () => {
           {step < 2 && (
             <button
               className={`${
-                formData?.name && formData?.email
+                formData?.airLineName &&
+                formData?.flightNumber &&
+                formData?.dateOfDisruption
                   ? "bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
                   : "bg-blue-300 px-6 py-1.5 rounded-lg text-white"
               }`}
               onClick={handleNext}
-              disabled={!formData?.name && !formData?.email}
+              disabled={
+                !formData?.airLineName &&
+                !formData?.flightNumber &&
+                !formData?.dateOfDisruption
+              }
             >
               Next Button is fire
             </button>
