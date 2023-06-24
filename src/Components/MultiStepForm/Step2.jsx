@@ -2,7 +2,7 @@ import React from "react";
 
 const Step2 = ({ setFormData, formData }) => {
   return (
-    <div>
+    <div className="transition-opacity  transform duration-500">
       <div className="mb-4">
         <label
           className="block font-medium mb-2 text-gray-700"

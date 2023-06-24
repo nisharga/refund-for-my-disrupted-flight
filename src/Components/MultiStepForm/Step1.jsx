@@ -4,7 +4,7 @@ import { RxIdCard } from "react-icons/rx";
 
 const Step1 = ({ setFormData, formData }) => {
   return (
-    <div>
+    <div className="transition-opacity  transform duration-500">
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
           Flight Details

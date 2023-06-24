@@ -36,7 +36,7 @@ const MultiStepForm = () => {
         <h2 className="text-lg font-medium mb-4">Step {step} of 2</h2>
         <div className="flex mb-4">
           <div
-            className={`w-1/2 border-r border-gray-400 ${
+            className={`w-1/2  rounded-l-md ${
               step === 1
                 ? "bg-blue-500 text-white"
                 : formData?.name && formData?.email
@@ -50,7 +50,7 @@ const MultiStepForm = () => {
           </div>
           <div
             className={`w-1/2 ${
-              step === 2 ? "bg-blue-500 text-white" : "bg-gray-200"
+              step === 2 ? "bg-blue-500 text-white" : "bg-gray-200 rounded-r-md"
             } p-2 text-center cursor-pointer`}
             onClick={() => setStep(2)}
           >
