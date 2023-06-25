@@ -7,12 +7,16 @@ const MultiStepForm = () => {
   // const [disruptionDate, setDisruptionDate] = useState("");
   const [formData, setFormData] = useState({
     airLineName: "",
+    airLineId:"",
     flightNumber: "",
     dateOfDisruption: "",
     reasonForDisruption: "",
     boardingPassNumber: "",
     boardingPassDate: "",
     isRecipts: "no",
+    mealAmount: "",
+    accommodationAmount: "",
+    transportAmount:"",
     emailSummary: "",
     messageSumamry: "",
   });
@@ -48,7 +52,7 @@ const MultiStepForm = () => {
             } p-2 text-center cursor-pointer`}
             onClick={() => setStep(1)}
           >
-            Step 1 test
+            Step 1
           </div>
           <div
             className={`w-1/2 ${
@@ -79,7 +83,12 @@ const MultiStepForm = () => {
                 Back is not back to back cblll
               </button>
 
-              {formData?.name && formData?.email && formData?.password && (
+              {formData?.airLineName &&
+                formData?.flightNumber &&
+                formData?.dateOfDisruption &&
+                formData?.reasonForDisruption &&
+                formData?.boardingPassNumber &&
+                formData?.boardingPassDate&& (
                 <form onSubmit={onSubmitFormData}>
                   <button
                     type="submit"

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import logo from '../../Assets/logo.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,46 +16,48 @@ const Navbar = () => {
             .then()
             .catch(error => console.log(error))
     }
+    const content = <>
+        <Link
+            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            Airlines Policies
+        </Link>
+        <Link
+            className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            About Us
+        </Link>
+        {
+            user ?
+                <Link onClick={logout}
+
+                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+                >
+                    Logout
+                </Link>
+                :
+                <Link
+
+                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+                >
+                    Login
+                </Link>
+        }
+    </>
     return (
         <>
             <nav className="bg-gray-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                                <span className="text-white">Logo</span>
+                            <div className="flex-shrink-0 flex gap-1 items-center">
+                                <img className='h-5 w-5 rounded-full' src={logo} alt="" />
+                                <span className="text-white">AI AirAssistant</span>
                             </div>
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-4 flex items-center">
-                                <Link
-                                    href="#"
-                                    className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
-                                >
-                                    Link 1
-                                </Link>
-                                <Link
-                                    href="#"
-                                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
-                                >
-                                    Link 2
-                                </Link>
-                                {
-                                    user ?
-                                        <Link onClick={logout}
-                                            href="#"
-                                            className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
-                                        >
-                                            Logout
-                                        </Link>
-                                        :
-                                        <Link
-                                            href="#"
-                                            className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
-                                        >
-                                            Login
-                                        </Link>
-                                }
+                                {content}
                             </div>
                         </div>
                         <div className="-mr-2 flex md:hidden">
@@ -92,34 +95,7 @@ const Navbar = () => {
                 {isOpen && (
                     <div className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            <Link
-                                href="#"
-                                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700"
-                            >
-                                Link 1
-                            </Link>
-                            <Link
-                                href="#"
-                                className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700"
-                            >
-                                Link 2
-                            </Link>
-                            {
-                                user ?
-                                    <Link onClick={logout}
-                                        href="#"
-                                        className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
-                                    >
-                                        Logout
-                                    </Link>
-                                    :
-                                    <Link
-                                        href="#"
-                                        className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
-                                    >
-                                        Login
-                                    </Link>
-                            }
+                            {content}
                         </div>
                     </div>
                 )}

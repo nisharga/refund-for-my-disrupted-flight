@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -13,6 +13,48 @@ const Step1 = ({ setFormData, formData }) => {
   const [disruptionDate, setDisruptionDate] = useState(null);
   const [boardingPassDate, setSetBoardingPassDate] = useState(null);
   //   const [selectReason, setSelectReson] = useState("");
+  const [airData, setAirData] = useState([]);
+  const [filteredOptions, setFilteredOptions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [seletedAirlineCode, setSeletedAirlineCode] = useState('');
+
+  useEffect(() => {
+    fetch('airlines.json')
+      .then(res => res.json())
+      .then(data => {
+        setAirData(data);
+      })
+  }, [])
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    setSearchTerm(value);
+    setFormData({ ...formData, airLineName: e.target.value });
+    if (value === "") {
+      setFilteredOptions([]);
+      setSeletedAirlineCode("");
+    }
+    else {
+      const filtered = airData.filter(option =>
+        option.name.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredOptions(filtered);
+
+    }
+
+
+  }
+
+  const handleSelectOption = (data) => {
+    console.log("option click: ", data.name);
+    setFormData({ ...formData, airLineName: data });
+    setFormData({ ...formData, airLineId: data.id });
+    setSeletedAirlineCode(data.id);
+    setSearchTerm(data.name);
+    setFilteredOptions([]);
+  };
+
 
   const handleDisruptionDate = (date) => {
     setDisruptionDate(date);
@@ -28,6 +70,9 @@ const Step1 = ({ setFormData, formData }) => {
       boardingPassDate: format(date, "PP"),
     });
   };
+
+
+
 
   return (
     <div className="transition-opacity transform duration-500">
@@ -50,14 +95,30 @@ const Step1 = ({ setFormData, formData }) => {
                 type="text"
                 className="ml-1 w-full border-none outline-none"
                 placeholder="e.g Delta Airliens"
-                value={formData?.airLineName}
-                onChange={(e) =>
-                  setFormData({ ...formData, airLineName: e.target.value })
-                }
+                value={searchTerm}
+                onChange={handleSearch}
                 required
               />
             </div>
+            {/* Filtered Data */}
+            {
+              filteredOptions.length > 0 && (
+                <div className="absolute w-72 bg-white border-none outline-none">
+                  {
+                    filteredOptions.map((data, index) => (
+                      <div key={index}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                        onClick={() => handleSelectOption(data)}
+                      >
+                        {data.name}
+                      </div>
+                    ))
+                  }
+                </div>
+              )
+            }
           </div>
+
           <div>
             <label
               className="block font-medium mb-2 text-gray-700"
@@ -66,16 +127,17 @@ const Step1 = ({ setFormData, formData }) => {
               Flight Number
             </label>
             <div
-              className={`p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
+              className={`pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
             >
               <RxIdCard className="text-gray-400 text-lg" />
+              {/* selected airline's code */}
+              {seletedAirlineCode !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{seletedAirlineCode}</span>}
               <input
                 type="text"
                 readOnly={!formData?.airLineName}
-                className={`ml-1 w-full border-none outline-none ${
-                  !formData?.airLineName && "cursor-not-allowed"
-                }`}
-                placeholder="e.g DA-123"
+                className={`ml-1 w-full border-none outline-none ${!formData?.airLineName && "cursor-not-allowed"
+                  }`}
+                placeholder={`${seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"}`}
                 value={formData?.flightNumber}
                 onChange={(e) =>
                   setFormData({ ...formData, flightNumber: e.target.value })
@@ -98,9 +160,8 @@ const Step1 = ({ setFormData, formData }) => {
               <DatePicker
                 readOnly={!formData?.airLineName}
                 disabled={!formData?.airLineName}
-                className={`ml-1 w-full border-none outline-none ${
-                  !formData?.flightNumber && "cursor-not-allowed"
-                }`}
+                className={`ml-1 w-full border-none outline-none ${!formData?.flightNumber && "cursor-not-allowed"
+                  }`}
                 selected={disruptionDate}
                 onChange={handleDisruptionDate}
                 placeholderText="MM/DD/YYYY"
@@ -111,7 +172,7 @@ const Step1 = ({ setFormData, formData }) => {
         </div>
       </div>
 
-      {/* boarding pass details fild */}
+      {/* boarding pass details field */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
           Disruption Reason and Boarding Pass Details
@@ -158,10 +219,11 @@ const Step1 = ({ setFormData, formData }) => {
             </label>
             <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
               <MdOutlineCardTravel className="text-gray-400 text-lg" />
+              {seletedAirlineCode !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{seletedAirlineCode}</span>}
               <input
-                type="text"
+                type="number"
                 className="ml-1 w-full border-none outline-none"
-                placeholder="e.g AC658"
+                placeholder={`${seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"}`}
                 value={formData?.boardingPassNumber}
                 onChange={(e) =>
                   setFormData({
