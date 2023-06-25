@@ -28,13 +28,11 @@ const Navbar = () => {
                         <div className="hidden md:block">
                             <div className="ml-4 flex items-center">
                                 <Link
-                                    href="#"
                                     className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
                                 >
                                     Link 1
                                 </Link>
                                 <Link
-                                    href="#"
                                     className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
                                 >
                                     Link 2
@@ -42,14 +40,14 @@ const Navbar = () => {
                                 {
                                     user ?
                                         <Link onClick={logout}
-                                            href="#"
+    
                                             className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
                                         >
                                             Logout
                                         </Link>
                                         :
                                         <Link
-                                            href="#"
+    
                                             className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
                                         >
                                             Login
@@ -93,13 +91,11 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             <Link
-                                href="#"
                                 className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700"
                             >
                                 Link 1
                             </Link>
                             <Link
-                                href="#"
                                 className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700"
                             >
                                 Link 2
@@ -107,14 +103,14 @@ const Navbar = () => {
                             {
                                 user ?
                                     <Link onClick={logout}
-                                        href="#"
+
                                         className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
                                     >
                                         Logout
                                     </Link>
                                     :
                                     <Link
-                                        href="#"
+
                                         className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
                                     >
                                         Login

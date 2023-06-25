@@ -7,6 +7,7 @@ const MultiStepForm = () => {
   // const [disruptionDate, setDisruptionDate] = useState("");
   const [formData, setFormData] = useState({
     airLineName: "",
+    airLineId:"",
     flightNumber: "",
     dateOfDisruption: "",
     reasonForDisruption: "",
