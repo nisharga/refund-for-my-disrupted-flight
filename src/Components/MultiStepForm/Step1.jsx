@@ -25,7 +25,6 @@ const Step1 = ({ setFormData, formData }) => {
         setAirData(data);
       })
   }, [])
-  // {(e) =>setFormData({ ...formData, airLineName: e.target.value })} value={formData?.airLineName}
 
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -173,7 +172,7 @@ const Step1 = ({ setFormData, formData }) => {
         </div>
       </div>
 
-      {/* boarding pass details fild */}
+      {/* boarding pass details field */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
           Disruption Reason and Boarding Pass Details
