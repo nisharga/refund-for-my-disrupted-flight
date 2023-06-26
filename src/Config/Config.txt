@@ -1,1 +1,0 @@
-firebase or other .env file calls from here

@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import { GrFacebook } from "react-icons/gr";
+import { BsGoogle } from "react-icons/bs";
 
 const SignIn = () => {
   const {
@@ -13,6 +15,7 @@ const SignIn = () => {
   const { signIn, googlesignIn, logOut } = useContext(AuthContext);
   const [signInError, setSignInError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = (data) => {
     setSignInError("");
@@ -36,6 +39,7 @@ const SignIn = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        navigate('/');
       })
       .catch((err) => console.log(err));
   };
@@ -83,14 +87,14 @@ const SignIn = () => {
           <div className="bg-gray-400  w-full h-[1px]"></div>
         </div>
         <div className="flex justify-center text-white gap-5">
-          <button className="bg-blue-500  hover:bg-blue-400 duration-300 py-2 w-1/2 rounded-md">
-            Facebook{" "}
+          <button className="bg-blue-500 flex justify-center items-center gap-2 align-middle  hover:bg-blue-400 duration-300 py-2 w-1/2 rounded-md">
+            <p><GrFacebook></GrFacebook> </p><p>Facebook{" "}</p>
           </button>
           <button
             onClick={handleGoogleSignIn}
-            className="bg-red-500  hover:bg-red-400 duration-300 py-2 w-1/2 rounded-md "
+            className="bg-red-500  hover:bg-red-400 duration-300 flex justify-center items-center gap-2 py-2 w-1/2 rounded-md "
           >
-            Google{" "}
+            <p><BsGoogle></BsGoogle></p> <p>Google{" "}</p>
           </button>
         </div>
         <p className="mt-10 text-center">
