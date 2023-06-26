@@ -23,7 +23,7 @@ const Result = () => {
   };
   return (
     <div className="m-5">
-      <h1 className="text-center text-xl">Result For Your Disrupted Flight</h1>
+      <h1 className="text-center text-xl">Result For Disrupted Flight</h1>
       <div className="flex justify-between">
         <div ref={pdfRef}>Result</div>
         <div>
