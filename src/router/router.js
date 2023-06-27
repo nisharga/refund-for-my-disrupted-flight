@@ -5,30 +5,41 @@ import SignUp from "../Components/SignUp/SignUp";
 import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Result from "../Components/Result/Result";
+import MyProfile from "../Components/MyProfile/MyProfile";
 
- export const router = createBrowserRouter([
-    {
-        path:"/",
-        element:<Main/>,
-        children:[
-            {
-                path:"/",
-                element : <PrivateRoute><MultiStepForm/></PrivateRoute>
-            },
-            {
-                path:"/result",
-                element : <PrivateRoute><Result/></PrivateRoute>
-            },
-            {
-                path:"/login",
-                element:<SignIn/>
-            },
-            {
-                path:"/register",
-                element:<SignUp/>
-            }
-        ]
-        
-    },
-    
-])
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <PrivateRoute>
+            <MultiStepForm />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/result",
+        element: (
+          <PrivateRoute>
+            <Result />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <SignIn />,
+      },
+      {
+        path: "/register",
+        element: <SignUp />,
+      },
+      {
+        path: "/profile",
+        element: <MyProfile />,
+      },
+    ],
+  },
+]);
