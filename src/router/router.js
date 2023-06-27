@@ -6,6 +6,7 @@ import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Result from "../Components/Result/Result";
 import MyProfile from "../Components/MyProfile/MyProfile";
+import AccountSetting from "../Components/AccountSetting/AccountSetting";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <MyProfile />,
+      },
+      {
+        path: "/settings",
+        element: <AccountSetting />,
       },
     ],
   },
