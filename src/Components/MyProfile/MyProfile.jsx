@@ -1,14 +1,14 @@
-import CoverPhoto from '../../Assets/cover_photo.png';
-import userImage from '../../Assets/user.png';
-import Breadcrumb from './../../Utils/Common/Breadcrumb';
-import FileSVG from './ProfileParts/FileSVG';
-import FileInputSVG from './ProfileParts/FileInputSVG';
+import CoverPhoto from "../../Assets/cover_photo.png";
+import userImage from "../../Assets/user.png";
+import Breadcrumb from "../../utils/Common/Breadcrumb";
+import FileInputSVG from "./ProfileParts/FileInputSVG";
+import FileSVG from "./ProfileParts/FileSVG";
 
 const MyProfile = () => {
   return (
     <>
       <Breadcrumb pageName="Profile" />
-      
+
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="relative z-20 h-35 md:h-65">
           <img
@@ -21,10 +21,10 @@ const MyProfile = () => {
               htmlFor="cover"
               className="flex cursor-pointer items-center justify-center gap-2 rounded bg-primary py-1 px-2 text-sm font-medium text-white hover:bg-opacity-80 xsm:px-4"
             >
-              <input type="file" name="cover" id="cover" className="sr-only" /> 
+              <input type="file" name="cover" id="cover" className="sr-only" />
               <span>
-                 <FileSVG/>
-              </span> 
+                <FileSVG />
+              </span>
             </label>
           </div>
         </div>
@@ -36,7 +36,7 @@ const MyProfile = () => {
                 htmlFor="profile"
                 className="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2"
               >
-                <FileInputSVG/>
+                <FileInputSVG />
                 <input
                   type="file"
                   name="profile"
@@ -54,19 +54,20 @@ const MyProfile = () => {
             <div className="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-3 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="font-semibold text-black dark:text-white">
-                    Account Create
+                  Account Create
                 </span>
                 <span className="text-sm">24 Jun 2023</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="font-semibold text-black dark:text-white">
-                Email Verified
+                  Email Verified
                 </span>
                 <span className="text-sm">True</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
                 <span className="font-semibold text-black dark:text-white">
-                 Last SignIn Time  </span>
+                  Last SignIn Time{" "}
+                </span>
                 <span className="text-sm">26 Jun 2023 08:21:35 GMT</span>
               </div>
             </div>

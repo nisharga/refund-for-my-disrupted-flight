@@ -1,5 +1,5 @@
 import userImage from "../../Assets/user.png";
-import Breadcrumb from "../../Utils/Common/Breadcrumb";
+import Breadcrumb from "../../utils/Common/Breadcrumb";
 import BioSVG from "./AccountSettingParts/BioSVG";
 import EmailSVG from "./AccountSettingParts/EmailSVG";
 import FileSVG from "./AccountSettingParts/FileSVG";
@@ -31,7 +31,7 @@ const AccountSetting = () => {
                       </label>
                       <div className="relative">
                         <span className="absolute left-4.5 top-4">
-                          <UserSVG/>
+                          <UserSVG />
                         </span>
                         <input
                           className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
@@ -71,7 +71,7 @@ const AccountSetting = () => {
                     </label>
                     <div className="relative">
                       <span className="absolute left-4.5 top-4">
-                        <EmailSVG/>
+                        <EmailSVG />
                       </span>
                       <input
                         className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
@@ -110,7 +110,7 @@ const AccountSetting = () => {
                     </label>
                     <div className="relative">
                       <span className="absolute left-4.5 top-4">
-                        <BioSVG/>
+                        <BioSVG />
                       </span>
 
                       <textarea
@@ -181,7 +181,7 @@ const AccountSetting = () => {
                     />
                     <div className="flex flex-col items-center justify-center space-y-3">
                       <span className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
-                       <FileSVG/>
+                        <FileSVG />
                       </span>
                       <p>
                         <span className="text-primary">Click to upload</span> or
