@@ -30,7 +30,7 @@ const Step1 = ({ setFormData, formData }) => {
     const value = e.target.value;
     console.log(value);
     setSearchTerm(value);
-    setFormData({ ...formData, airLineName: e.target.value });
+    
     if (value === "") {
       setFilteredOptions([]);
       setSeletedAirlineCode("");
@@ -47,13 +47,13 @@ const Step1 = ({ setFormData, formData }) => {
   }
 
   const handleSelectOption = (data) => {
-    console.log("option click: ", data.name);
-    setFormData({ ...formData, airLineName: data });
-    setFormData({ ...formData, airLineId: data.id });
-    setSeletedAirlineCode(data.id);
     setSearchTerm(data.name);
+    setFormData({ ...formData, airLineName: data.name, airLineId: data.id })
+    setSeletedAirlineCode(data.id);
     setFilteredOptions([]);
   };
+  console.log("filtered options: ", filteredOptions);
+
 
 
   const handleDisruptionDate = (date) => {
@@ -131,7 +131,7 @@ const Step1 = ({ setFormData, formData }) => {
             >
               <RxIdCard className="text-gray-400 text-lg" />
               {/* selected airline's code */}
-              {seletedAirlineCode !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{seletedAirlineCode}</span>}
+              {seletedAirlineCode !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{seletedAirlineCode}</span> }
               <input
                 type="text"
                 readOnly={!formData?.airLineName}
