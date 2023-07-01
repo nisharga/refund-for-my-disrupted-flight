@@ -7,19 +7,25 @@ const MultiStepForm = () => {
   // const [disruptionDate, setDisruptionDate] = useState("");
   const [formData, setFormData] = useState({
     airLineName: "",
-    airLineId:"",
+    airLineId: "",
     flightNumber: "",
     dateOfDisruption: "",
     reasonForDisruption: "",
     boardingPassNumber: "",
     boardingPassDate: "",
-    isRecipts: "no",
     mealAmount: "",
     accommodationAmount: "",
-    transportAmount:"",
+    transportAmount: "",
     emailSummary: "",
     messageSumamry: "",
   });
+
+  /*
+  State: step,input data
+  1st form: next button === setStep(step+1)
+  inputData must be contorled form // usecontex
+
+*/
 
   const handleNext = () => {
     setStep(step + 1);
@@ -88,16 +94,16 @@ const MultiStepForm = () => {
                 formData?.dateOfDisruption &&
                 formData?.reasonForDisruption &&
                 formData?.boardingPassNumber &&
-                formData?.boardingPassDate&& (
-                <form onSubmit={onSubmitFormData}>
-                  <button
-                    type="submit"
-                    className="bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
-                  >
-                    Submit Data
-                  </button>
-                </form>
-              )}
+                formData?.boardingPassDate && (
+                  <form onSubmit={onSubmitFormData}>
+                    <button
+                      type="submit"
+                      className="bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
+                    >
+                      Submit Data
+                    </button>
+                  </form>
+                )}
             </>
           )}
           {step < 2 && (
