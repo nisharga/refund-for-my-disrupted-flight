@@ -20,6 +20,13 @@ const MultiStepForm = () => {
     messageSumamry: "",
   });
 
+  /*
+  State: step,input data
+  1st form: next button === setStep(step+1)
+  inputData must be contorled form // usecontex
+
+*/
+
   const handleNext = () => {
     setStep(step + 1);
   };
