@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import Navbar from "../utils/Navbar/Navbar";
-
 const Main = () => {
   return (
     <div>
@@ -11,7 +10,7 @@ const Main = () => {
           <Sidebar />
         </div>
         <div className="w-full lg:w-[70%]  bg-white">
-          <Navbar/>
+          <Navbar />
           <Outlet />
         </div>
       </div>
