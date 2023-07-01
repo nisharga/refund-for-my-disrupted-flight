@@ -14,10 +14,7 @@ const Step1 = ({ setFormData, formData }) => {
 
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
-  const [selectedAirline, setSelectedAirline] = useState("");
-  console.log(selectedAirline);
 
   useEffect(() => {
     fetch("airlines.json")
@@ -31,7 +28,6 @@ const Step1 = ({ setFormData, formData }) => {
     const value = e.target.value;
     console.log(value);
     setFormData({ ...formData, airLineName: value });
-    setSearchTerm(value);
     if (value === "") {
       setFilteredOptions([]);
       setSeletedAirlineCode("");
@@ -44,7 +40,6 @@ const Step1 = ({ setFormData, formData }) => {
   }
 
   const handleSelectOption = (data) => {
-    setSearchTerm(data.name);
     setFormData({ ...formData, airLineName: data.name, airLineId: data.id });
     setSeletedAirlineCode(data.id);
     setFilteredOptions([]);
