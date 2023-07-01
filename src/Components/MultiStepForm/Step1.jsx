@@ -31,9 +31,6 @@ const Step1 = ({ setFormData, formData }) => {
     const value = e.target.value;
     console.log(value);
     setSearchTerm(value);
-    selectedAirline
-      ? setFormData({ ...formData, airLineName: selectedAirline })
-      : setFormData({ ...formData, airLineName: e.target.value });
     if (value === "") {
       setFilteredOptions([]);
       setSeletedAirlineCode("");
@@ -43,15 +40,12 @@ const Step1 = ({ setFormData, formData }) => {
       );
       setFilteredOptions(filtered);
     }
-  };
+  }
 
   const handleSelectOption = (data) => {
-    console.log("option click: ", data.name);
-    setSelectedAirline(data.name);
-    setFormData({ ...formData, airLineName: data.name });
-    setFormData({ ...formData, airLineId: data.id });
-    setSeletedAirlineCode(data.id);
     setSearchTerm(data.name);
+    setFormData({ ...formData, airLineName: data.name, airLineId: data.id });
+    setSeletedAirlineCode(data.id);
     setFilteredOptions([]);
   };
 
@@ -125,11 +119,7 @@ const Step1 = ({ setFormData, formData }) => {
               className={`border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
             >
               {/* selected airline's code */}
-              {seletedAirlineCode !== "" && (
-                <span name="airLineId" className=" px-2   text-black">
-                  {seletedAirlineCode}
-                </span>
-              )}
+              {seletedAirlineCode !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{seletedAirlineCode}</span> }
               <input
                 type="text"
                 // readOnly={!formData?.airLineName}
