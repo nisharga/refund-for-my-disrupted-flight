@@ -30,7 +30,6 @@ const Step1 = ({ setFormData, formData }) => {
     const value = e.target.value;
     console.log(value);
     setSearchTerm(value);
-    
     if (value === "") {
       setFilteredOptions([]);
       setSeletedAirlineCode("");
@@ -42,19 +41,14 @@ const Step1 = ({ setFormData, formData }) => {
       setFilteredOptions(filtered);
 
     }
-
-
   }
 
   const handleSelectOption = (data) => {
     setSearchTerm(data.name);
-    setFormData({ ...formData, airLineName: data.name, airLineId: data.id })
+    setFormData({ ...formData, airLineName: data.name, airLineId: data.id });
     setSeletedAirlineCode(data.id);
     setFilteredOptions([]);
   };
-  console.log("filtered options: ", filteredOptions);
-
-
 
   const handleDisruptionDate = (date) => {
     setDisruptionDate(date);

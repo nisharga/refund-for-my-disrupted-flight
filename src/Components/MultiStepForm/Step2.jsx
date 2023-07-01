@@ -37,7 +37,7 @@ const Step2 = ({ setFormData, formData }) => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-3 my-5">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-3 my-5">
           <div>
             <label
               className="block font-medium mb-2 text-gray-700"
@@ -48,13 +48,11 @@ const Step2 = ({ setFormData, formData }) => {
             <div
               className={`pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
             >
-              {/* <RxIdCard className="text-gray-400 text-lg" /> */}
               <input
                 type="number"
                 readOnly={!formData?.airLineName}
                 className={`ml-1 w-full border-none outline-none ${!formData?.airLineName && "cursor-not-allowed"
                   }`}
-                // placeholder={`${seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"}`}
                 value={formData?.mealAmount}
                 onChange={(e) =>
                   setFormData({ ...formData, mealAmount: e.target.value })
@@ -73,13 +71,11 @@ const Step2 = ({ setFormData, formData }) => {
             <div
               className={`pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
             >
-              {/* <RxIdCard className="text-gray-400 text-lg" /> */}
               <input
                 type="number"
                 readOnly={!formData?.airLineName}
                 className={`ml-1 w-full border-none outline-none ${!formData?.airLineName && "cursor-not-allowed"
                   }`}
-                // placeholder={`${seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"}`}
                 value={formData?.accommodationAmount}
                 onChange={(e) =>
                   setFormData({ ...formData, accommodationAmount: e.target.value })
@@ -98,13 +94,11 @@ const Step2 = ({ setFormData, formData }) => {
             <div
               className={`pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
             >
-              {/* <RxIdCard className="text-gray-400 text-lg" /> */}
               <input
                 type="number"
                 readOnly={!formData?.airLineName}
                 className={`ml-1 w-full border-none outline-none ${!formData?.airLineName && "cursor-not-allowed"
                   }`}
-                // placeholder={`${seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"}`}
                 value={formData?.transportAmount}
                 onChange={(e) =>
                   setFormData({ ...formData, transportAmount: e.target.value })
@@ -113,10 +107,10 @@ const Step2 = ({ setFormData, formData }) => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
       </div>
-      <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
+      {/* <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
           Communication With Airlines
         </h4>
@@ -157,7 +151,7 @@ const Step2 = ({ setFormData, formData }) => {
           </div>
         </div>
 
-      </div>
+      </div> */}
     </div>
   );
 };
