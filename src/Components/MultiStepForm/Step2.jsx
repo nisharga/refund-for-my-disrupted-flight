@@ -2,27 +2,41 @@ import React, { useState } from "react";
 
 const Step2 = ({ setFormData, formData }) => {
   const [isRecipt, setRecipt] = useState("no");
+  // const [inputNum, setInputNum] = useState([1]);
   const [receiptInputList, setReciptInputList] = useState([
-    { reciptAmount: "" },
+    { receiptName: "", receiptAmount: "" },
   ]);
 
   const handleAddRecipt = () => {
     setReciptInputList([
       ...receiptInputList,
-      { reciptName: "", reciptAmount: "" },
+      { receiptName: "", receiptAmount: "" },
     ]);
+    // setReciptInputList([...inputNum, Number(inputNum) + 1]);
   };
+
+  // console.log(inputNum);
 
   const handleRemoveRecipt = (i) => {
     const list = [...receiptInputList];
+    // const list = [...inputNum];
     list.splice(i, 1);
     setReciptInputList(list);
+    // setInputNum(list);
   };
 
   const handleReciptInputChange = (e, index) => {
     const { name, value } = e.target;
+    // console.log(name, value);
+    // console.log(e.target.value);
+
+    // const selectValue = e.target.receiptName.value;
+    // const inputValue = e.target.receiptAmount.value;
+    // console.log(selectValue, "inputVale", inputValue);
     const list = [...receiptInputList];
+
     list[index][name] = value;
+    // console.log(list);
     setReciptInputList(list);
   };
 
@@ -80,6 +94,7 @@ const Step2 = ({ setFormData, formData }) => {
           <h4 className="font-medium mb-2 text-lg text-gray-700">
             Add your receipt details
           </h4>
+          {/* {receiptInputList?.map((x, i) => { */}
           {receiptInputList?.map((x, i) => {
             return (
               <div
@@ -91,6 +106,7 @@ const Step2 = ({ setFormData, formData }) => {
                     className="bg-gray-200 pl-3 outline-none border rounded-l-md border-gray-400"
                     required
                     onChange={(e) => handleReciptInputChange(e, i)}
+                    name="receiptName"
                   >
                     <option defaultValue="nothing" disabled selected>
                       Select a Recipt
@@ -104,7 +120,7 @@ const Step2 = ({ setFormData, formData }) => {
                     <span className="text-gray-400 ">$</span>
                     <input
                       type="text"
-                      name="reciptAmoutn"
+                      name="receiptAmount"
                       className="ml-1 w-full border-none outline-none"
                       placeholder="120"
                       onChange={(e) => handleReciptInputChange(e, i)}
@@ -112,6 +128,7 @@ const Step2 = ({ setFormData, formData }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
+                  {/* {receiptInputList?.length !== 1 && ( */}
                   {receiptInputList?.length !== 1 && (
                     <button
                       className="bg-blue-400 text-white px-3 py-2 rounded-md"
@@ -120,6 +137,7 @@ const Step2 = ({ setFormData, formData }) => {
                       X
                     </button>
                   )}
+                  {/* {receiptInputList?.length - 1 === i && ( */}
                   {receiptInputList?.length - 1 === i && (
                     <button
                       className="bg-blue-400 text-white px-3 py-2  rounded-md"

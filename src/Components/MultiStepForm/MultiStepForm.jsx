@@ -13,11 +13,9 @@ const MultiStepForm = () => {
     reasonForDisruption: "",
     boardingPassNumber: "",
     boardingPassDate: "",
-    mealAmount: "",
-    accommodationAmount: "",
-    transportAmount: "",
+    receiptDetails: [],
     emailSummary: "",
-    messageSumamry: "",
+    messageSummary: "",
   });
 
   /*
@@ -86,7 +84,7 @@ const MultiStepForm = () => {
                 className="bg-gray-300 px-6 py-1.5 rounded-lg text-gray-700 hover:bg-gray-400"
                 onClick={handleBack}
               >
-                Back is not back to back cblll
+                Previous
               </button>
 
               {formData?.airLineName &&
