@@ -14,10 +14,7 @@ const Step1 = ({ setFormData, formData }) => {
 
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
-  const [selectedAirline, setSelectedAirline] = useState("");
-  console.log(selectedAirline);
 
   useEffect(() => {
     fetch("airlines.json")
@@ -30,7 +27,7 @@ const Step1 = ({ setFormData, formData }) => {
   const handleSearch = (e) => {
     const value = e.target.value;
     console.log(value);
-    setSearchTerm(value);
+    setFormData({ ...formData, airLineName: value });
     if (value === "") {
       setFilteredOptions([]);
       setSeletedAirlineCode("");
@@ -43,7 +40,6 @@ const Step1 = ({ setFormData, formData }) => {
   }
 
   const handleSelectOption = (data) => {
-    setSearchTerm(data.name);
     setFormData({ ...formData, airLineName: data.name, airLineId: data.id });
     setSeletedAirlineCode(data.id);
     setFilteredOptions([]);
@@ -87,7 +83,7 @@ const Step1 = ({ setFormData, formData }) => {
                 type="text"
                 className="ml-1 w-full border-none outline-none"
                 placeholder="e.g Delta Airlines"
-                value={searchTerm}
+                value={formData.airLineName}
                 onChange={handleSearch}
                 required
               />
@@ -119,7 +115,7 @@ const Step1 = ({ setFormData, formData }) => {
               className={`border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
             >
               {/* selected airline's code */}
-              {seletedAirlineCode !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{seletedAirlineCode}</span> }
+              {formData.airLineId !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{formData.airLineId}</span> }
               <input
                 type="text"
                 // readOnly={!formData?.airLineName}
@@ -210,12 +206,12 @@ const Step1 = ({ setFormData, formData }) => {
             </label>
             <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
               <MdOutlineCardTravel className="text-gray-400 text-lg" />
-              {seletedAirlineCode !== "" && (
+              {formData.airLineId !== "" && (
                 <span
                   name="airLineId"
                   className="ml-2 px-2 text-gray-400 border"
                 >
-                  {seletedAirlineCode}
+                  {formData.airLineId}
                 </span>
               )}
               <input
