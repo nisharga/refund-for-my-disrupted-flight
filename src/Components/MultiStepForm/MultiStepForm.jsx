@@ -13,7 +13,7 @@ const MultiStepForm = () => {
     reasonForDisruption: "",
     boardingPassNumber: "",
     boardingPassDate: "",
-    receiptDetails: [],
+    receiptDetails: [{ receiptName: "", receiptAmount: "" }],
     emailSummary: "",
     messageSummary: "",
   });
