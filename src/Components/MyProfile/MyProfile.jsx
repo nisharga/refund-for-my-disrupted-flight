@@ -1,6 +1,6 @@
 import CoverPhoto from "../../Assets/cover_photo.png";
 import userImage from "../../Assets/user.png"; 
-import Breadcrumb from "../../Utils/Common/Breadcrumb";
+import Breadcrumb from "../../utils/Common/Breadcrumb";
 import FileInputSVG from "./ProfileParts/FileInputSVG";
 import FileSVG from "./ProfileParts/FileSVG";
 

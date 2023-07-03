@@ -9,9 +9,6 @@ import {
 } from "react-icons/md";
 
 const Step1 = ({ setFormData, formData }) => {
-  const [disruptionDate, setDisruptionDate] = useState(null);
-  const [boardingPassDate, setSetBoardingPassDate] = useState(null);
-
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
@@ -46,21 +43,17 @@ const Step1 = ({ setFormData, formData }) => {
   };
 
   const handleDisruptionDate = (date) => {
-    setDisruptionDate(date);
     setFormData({
       ...formData,
       dateOfDisruption: format(date, "PP"),
     });
   };
   const handleBoardingPassDate = (date) => {
-    setSetBoardingPassDate(date);
     setFormData({
       ...formData,
       boardingPassDate: format(date, "PP"),
     });
   };
-
-  //  ---sabbir
 
   return (
     <div className="transition-opacity transform duration-500">
@@ -118,15 +111,13 @@ const Step1 = ({ setFormData, formData }) => {
               {formData.airLineId !== "" && <span name="airLineId" className="ml-2 px-2 text-gray-400 border" >{formData.airLineId}</span> }
               <input
                 type="text"
-                // readOnly={!formData?.airLineName}
                 // className={`ml-1 w-full border-none outline-none ${
                 //   !formData?.airLineName && "cursor-not-allowed"
                 // }`}
                 className={`ml-1 w-full border-none outline-none`}
-                // placeholder={`${
-                //   seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"
-                // }`}
-                placeholder="e.g DA-123"
+                placeholder={`${
+                  seletedAirlineCode !== "" ? "1234..." : "e.g DA-123"
+                }`}
                 value={formData?.flightNumber}
                 onChange={(e) =>
                   setFormData({ ...formData, flightNumber: e.target.value })
@@ -176,17 +167,17 @@ const Step1 = ({ setFormData, formData }) => {
             </label>
             <div className="w-full p-3 bg-white mx-auto border border-gray-400 rounded flex justify-end items-center h-10">
               <select
-                onClick={(e) =>
+                onChange={(e) =>
                   setFormData({
                     ...formData,
                     reasonForDisruption: e.target.value,
                   })
                 }
-                defaultValue={formData?.reasonForDisruption}
+                // defaultValue={formData?.reasonForDisruption === ""? "DEFAULT": formData?.reasonForDisruption}
                 className="w-full outline-none border-gray-400"
                 required
               >
-                <option defaultValue="nothing" disabled selected>
+                <option>
                   Select a Disruption Reason
                 </option>
                 <option value="Delay">Delay</option>
@@ -242,7 +233,6 @@ const Step1 = ({ setFormData, formData }) => {
               <MdOutlineDateRange className="text-gray-400 text-lg" />
               <DatePicker
                 className="ml-1 w-full border-none outline-none"
-                // selected={boardingPassDate}
                 value={formData?.boardingPassDate}
                 onChange={handleBoardingPassDate}
                 placeholderText="MM/DD/YYYY"

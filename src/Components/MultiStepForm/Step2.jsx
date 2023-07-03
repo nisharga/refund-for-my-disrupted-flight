@@ -15,9 +15,12 @@ const Step2 = ({ setFormData, formData }) => {
 
   const handleRemoveRecipt = (i) => {
     const list = [...formData.receiptDetails];
+    console.log(i);
     list.splice(i, 1);
+    console.log(list);
     setFormData({ ...formData, receiptDetails: list });
   };
+  console.log("remove: ", formData?.receiptDetails);
 
   const handleReciptInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -25,8 +28,6 @@ const Step2 = ({ setFormData, formData }) => {
     list[index][name] = value;
     setFormData({ ...formData, receiptDetails: list });
   };
-
-  console.log(formData);
 
   return (
     <div className="transition-opacity  transform duration-500">
@@ -45,7 +46,7 @@ const Step2 = ({ setFormData, formData }) => {
               id="noReceipt"
               name="receiptDetails"
               value="no"
-              checked={isRecipt === "no"}
+              defaultChecked={isRecipt === "no"}
               required
             />
             <label
@@ -65,8 +66,8 @@ const Step2 = ({ setFormData, formData }) => {
               className="w-4 h-4"
               id="yesRecipt"
               name="receiptDetails"
-              value="no"
-              checked={isRecipt === "yes"}
+              value="yes"
+              defaultChecked={isRecipt === "yes"}
               required
             />
             <label htmlFor="yesRecipt" className="ml-2 mr-4 text-gray-400">
@@ -80,7 +81,7 @@ const Step2 = ({ setFormData, formData }) => {
           <h4 className="font-medium mb-2 text-lg text-gray-700">
             Add your receipt details
           </h4>
-          {formData?.receiptDetails?.map((x, i) => {
+          {formData?.receiptDetails?.map((receipt, i) => {
             return (
               <div
                 key={i}
@@ -93,13 +94,13 @@ const Step2 = ({ setFormData, formData }) => {
                     onChange={(e) => handleReciptInputChange(e, i)}
                     name="receiptName"
                   >
-                    <option defaultValue="nothing" disabled selected>
+                    <option defaultValue="nothing" disabled selected={receipt.receiptName === ""}>
                       Select a Recipt
                     </option>
-                    <option value="meal">Meal</option>
-                    <option value="accommodation">Accommodation</option>
-                    <option value="transportation">Transportation</option>
-                    <option value="others">Others</option>
+                    <option value="meal" selected={receipt.receiptName === "meal"}>Meal</option>
+                    <option value="accommodation" selected={receipt.receiptName === "accommodation"}>Accommodation</option>
+                    <option value="transportation" selected={receipt.receiptName === "transportation"}>Transportation</option>
+                    <option value="others" selected={receipt.receiptName === "others"}>Others</option>
                   </select>
                   <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded-r-md flex justify-end items-center h-10">
                     <span className="text-gray-400 ">$</span>
@@ -109,11 +110,12 @@ const Step2 = ({ setFormData, formData }) => {
                       className="ml-1 w-full border-none outline-none"
                       placeholder="120"
                       onChange={(e) => handleReciptInputChange(e, i)}
+                      value={receipt.receiptAmount === "" ? "" : receipt.receiptAmount}
                     />
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  {formData?.receiptDetails?.length !== 1 && (
+                  {formData?.receiptDetails?.length > 1 && (
                     <button
                       className="bg-blue-400 text-white px-3 py-2 rounded-md"
                       onClick={() => handleRemoveRecipt(i)}
@@ -148,9 +150,8 @@ const Step2 = ({ setFormData, formData }) => {
               Email Communication Summary
             </label>
             <textarea
-              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${
-                !formData?.airLineName && "cursor-not-allowed"
-              }`}
+              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${!formData?.airLineName && "cursor-not-allowed"
+                }`}
               rows={10}
               cols={30}
               readOnly={!formData?.airLineName}
@@ -172,16 +173,15 @@ const Step2 = ({ setFormData, formData }) => {
               Message Exchange Summary
             </label>
             <textarea
-              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${
-                !formData?.airLineName && "cursor-not-allowed"
-              }`}
+              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${!formData?.airLineName && "cursor-not-allowed"
+                }`}
               rows={10}
               cols={30}
               readOnly={!formData?.airLineName}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  messageSumamry: e.target.value,
+                  messageSummary: e.target.value,
                 })
               }
             ></textarea>

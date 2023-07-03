@@ -8,7 +8,6 @@ import "./Navbar.css";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { logOut, user } = useContext(AuthContext);
-    console.log(user);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -19,15 +18,21 @@ const Navbar = () => {
             .catch(error => console.log(error))
     }
     const content = <>
-        <Link
+        <Link to="/"
+            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            Home
+        </Link>
+        <Link to="/policies"
             className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
         >
             Airlines Policies
         </Link>
         <Link
             className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            to='/feedback_contact'
         >
-            About Us
+            Feedback & Contact
         </Link>
         
         {
@@ -47,7 +52,7 @@ const Navbar = () => {
                 </Link>
         }
 
-            {<DropdownUser/>}
+            {/* {<DropdownUser/>} */}
 
     </>
     return (

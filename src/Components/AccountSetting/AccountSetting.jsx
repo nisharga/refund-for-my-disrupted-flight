@@ -2,7 +2,7 @@ import userImage from "../../Assets/user.png";
 import BioSVG from "./AccountSettingParts/BioSVG";
 import EmailSVG from "./AccountSettingParts/EmailSVG";
 import UserSVG from "./AccountSettingParts/UserSVG";
-import Breadcrumb from './../../Utils/Common/Breadcrumb';
+import Breadcrumb from './../../utils/Common/Breadcrumb';
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
 
