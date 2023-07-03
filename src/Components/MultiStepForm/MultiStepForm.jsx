@@ -243,7 +243,7 @@ const MultiStepForm = () => {
         {
           eligibility && letter ?
 
-            <Result eligibleResult={eligibility} letterResult={letter}></Result>
+            <Result eligibleResult={eligibility} letterResult={letter} setEligibility={setEligibility} setLetter={setLetter}></Result>
             :
             resultLoading ?
               <>
