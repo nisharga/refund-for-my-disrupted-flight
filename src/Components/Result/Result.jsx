@@ -17,7 +17,7 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter }) => 
     .map((paragraph, index) => <span key={index}>{paragraph}<br /></span>);
 
   console.log(eligibleResult.data, letterResult, eligibility);
-  const generatePDF = () => {
+  const generatePDF = async () => {
     if (eligibility) {
       const content = pdfRef.current;
       const doc = new jsPDF({
@@ -25,7 +25,7 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter }) => 
         unit: "mm",
         format: "a4",
       });
-      doc.html(content, {
+      await doc.html(content, {
         width: 180,
         windowWidth: 700,
         margin: [20, 20, 20, 20],

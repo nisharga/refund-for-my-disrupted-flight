@@ -18,7 +18,12 @@ const Navbar = () => {
             .catch(error => console.log(error))
     }
     const content = <>
-        <Link
+        <Link to="/"
+            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            Home
+        </Link>
+        <Link to="/policies"
             className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
         >
             Airlines Policies
@@ -47,7 +52,7 @@ const Navbar = () => {
                 </Link>
         }
 
-            {<DropdownUser/>}
+            {/* {<DropdownUser/>} */}
 
     </>
     return (

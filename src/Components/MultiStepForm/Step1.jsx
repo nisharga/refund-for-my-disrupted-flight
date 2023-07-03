@@ -9,9 +9,6 @@ import {
 } from "react-icons/md";
 
 const Step1 = ({ setFormData, formData }) => {
-  const [disruptionDate, setDisruptionDate] = useState(null);
-  const [boardingPassDate, setSetBoardingPassDate] = useState(null);
-
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
@@ -46,14 +43,12 @@ const Step1 = ({ setFormData, formData }) => {
   };
 
   const handleDisruptionDate = (date) => {
-    setDisruptionDate(date);
     setFormData({
       ...formData,
       dateOfDisruption: format(date, "PP"),
     });
   };
   const handleBoardingPassDate = (date) => {
-    setSetBoardingPassDate(date);
     setFormData({
       ...formData,
       boardingPassDate: format(date, "PP"),

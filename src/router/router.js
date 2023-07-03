@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import MyProfile from "../Components/MyProfile/MyProfile";
 import AccountSetting from "../Components/AccountSetting/AccountSetting";
 import Contact from "../Components/Contact/Contact";
+import Policies from "../Components/Policies/Policies";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,15 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Contact />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/policies",
+        loader: () => fetch("airlines.json"),
+        element: (
+          <PrivateRoute>
+            <Policies />
           </PrivateRoute>
         ),
       },
