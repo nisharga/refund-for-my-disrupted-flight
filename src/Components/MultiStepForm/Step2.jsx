@@ -2,31 +2,31 @@ import React, { useState } from "react";
 
 const Step2 = ({ setFormData, formData }) => {
   const [isRecipt, setRecipt] = useState("no");
-  const [receiptInputList, setReciptInputList] = useState([
-    { reciptAmount: "" },
-  ]);
 
   const handleAddRecipt = () => {
-    setReciptInputList([
-      ...receiptInputList,
-      { reciptName: "", reciptAmount: "" },
-    ]);
+    setFormData({
+      ...formData,
+      receiptDetails: [
+        ...formData?.receiptDetails,
+        { receiptName: "", receiptAmount: "" },
+      ],
+    });
   };
 
   const handleRemoveRecipt = (i) => {
-    const list = [...receiptInputList];
+    const list = [...formData.receiptDetails];
     list.splice(i, 1);
-    setReciptInputList(list);
+    setFormData({ ...formData, receiptDetails: list });
   };
 
   const handleReciptInputChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...receiptInputList];
+    const list = [...formData?.receiptDetails];
     list[index][name] = value;
-    setReciptInputList(list);
+    setFormData({ ...formData, receiptDetails: list });
   };
 
-  console.log(receiptInputList);
+  console.log(formData);
 
   return (
     <div className="transition-opacity  transform duration-500">
@@ -80,7 +80,7 @@ const Step2 = ({ setFormData, formData }) => {
           <h4 className="font-medium mb-2 text-lg text-gray-700">
             Add your receipt details
           </h4>
-          {receiptInputList?.map((x, i) => {
+          {formData?.receiptDetails?.map((x, i) => {
             return (
               <div
                 key={i}
@@ -91,6 +91,7 @@ const Step2 = ({ setFormData, formData }) => {
                     className="bg-gray-200 pl-3 outline-none border rounded-l-md border-gray-400"
                     required
                     onChange={(e) => handleReciptInputChange(e, i)}
+                    name="receiptName"
                   >
                     <option defaultValue="nothing" disabled selected>
                       Select a Recipt
@@ -104,7 +105,7 @@ const Step2 = ({ setFormData, formData }) => {
                     <span className="text-gray-400 ">$</span>
                     <input
                       type="text"
-                      name="reciptAmoutn"
+                      name="receiptAmount"
                       className="ml-1 w-full border-none outline-none"
                       placeholder="120"
                       onChange={(e) => handleReciptInputChange(e, i)}
@@ -112,7 +113,7 @@ const Step2 = ({ setFormData, formData }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  {receiptInputList?.length !== 1 && (
+                  {formData?.receiptDetails?.length !== 1 && (
                     <button
                       className="bg-blue-400 text-white px-3 py-2 rounded-md"
                       onClick={() => handleRemoveRecipt(i)}
@@ -120,7 +121,7 @@ const Step2 = ({ setFormData, formData }) => {
                       X
                     </button>
                   )}
-                  {receiptInputList?.length - 1 === i && (
+                  {formData?.receiptDetails?.length - 1 === i && (
                     <button
                       className="bg-blue-400 text-white px-3 py-2  rounded-md"
                       onClick={handleAddRecipt}
