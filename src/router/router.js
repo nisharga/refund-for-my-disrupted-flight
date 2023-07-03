@@ -4,9 +4,9 @@ import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
 import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import Result from "../Components/Result/Result";
 import MyProfile from "../Components/MyProfile/MyProfile";
 import AccountSetting from "../Components/AccountSetting/AccountSetting";
+import Contact from "../Components/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -22,10 +22,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/result",
+        path: "/feedback_contact",
         element: (
           <PrivateRoute>
-            <Result />
+            <Contact />
           </PrivateRoute>
         ),
       },
