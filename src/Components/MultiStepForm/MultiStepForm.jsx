@@ -226,13 +226,13 @@ const MultiStepForm = () => {
         {
           // 
           eligibility ?
-            <Result 
-            eligibleResult={eligibility} 
-            letterResult={letter}  
-            setEligibility={setEligibility} setLetter={setLetter}
-            dataForClaim={dataForClaim}
-            resultLoading={resultLoading}
-            setResultLoading={setResultLoading}>
+            <Result
+              eligibleResult={eligibility}
+              letterResult={letter}
+              setEligibility={setEligibility} setLetter={setLetter}
+              dataForClaim={dataForClaim}
+              resultLoading={resultLoading}
+              setResultLoading={setResultLoading}>
             </Result>
             :
             resultLoading ?
@@ -255,14 +255,20 @@ const MultiStepForm = () => {
             } p-2 text-center cursor-pointer`}
                     onClick={() => setStep(1)}
                   >
-                    Step 1
+                    <div className="flex items-center justify-center">
+                      <p className={`px-2  rounded-full border ${step === 1 ? "border-sky-500 shadow-md" : "border-slate-400"} mr-1.5`}>1</p>
+                      <p>Flight Details</p>
+                    </div>
                   </div>
                   <div
                     className={`w-1/2 ${step === 2 ? "bg-blue-500 text-white" : "bg-gray-200 rounded-r-md"
                       } p-2 text-center cursor-pointer`}
                     onClick={() => setStep(2)}
                   >
-                    Step 2
+                    <div className="flex items-center justify-center">
+                      <p className={`px-2  rounded-full border ${step === 2 ? "border-sky-500 shadow-md" : "border-slate-400"} mr-1.5`}>2</p>
+                      <p>Communication Details</p>
+                    </div>
                   </div>
                 </div>
                 {step === 1 ? (
@@ -308,8 +314,8 @@ const MultiStepForm = () => {
                         formData?.reasonForDisruption &&
                         formData?.boardingPassNumber &&
                         formData?.boardingPassDate
-                        ? "bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg text-white"
-                        : "bg-blue-300 px-8 py-3 rounded-lg text-white cursor-not-allowed"
+                        ? "bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
+                        : "bg-blue-300 px-6 py-1.5 rounded-lg text-white cursor-not-allowed"
                         }`}
                       onClick={handleNext}
                       disabled={
