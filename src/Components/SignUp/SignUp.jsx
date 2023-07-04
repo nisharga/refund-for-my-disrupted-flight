@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import { GrFacebook } from "react-icons/gr";
 import { BsGoogle } from "react-icons/bs";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const {
     register,
     watch,
@@ -27,6 +28,7 @@ const SignUp = () => {
         const user = res.user;
         console.log(user);
         reset();
+        navigate('/');
       })
       .catch((err) => setSignUpError(err.message));
   };

@@ -7,13 +7,16 @@ import { RxCross2 } from "react-icons/rx";
 import { AiOutlineReload, AiOutlineRollback } from "react-icons/ai";
 import letterLoading from "../../Assets/letterLoading.gif";
 
-const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataForClaim, resultLoading, setResultLoading }) => {
+const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataForClaim }) => {
+  const [resultLoading, setResultLoading] = useState(false);
   const pdfRef = useRef(null);
-  const [size, setSize] = useState(0);
   const { eligibility, answer } = eligibleResult?.data;
   const splitAnswer = answer.split("\n");
-  console.log("data for claim: ",dataForClaim);
 
+  const handleBack = () => {
+    setEligibility();
+    setLetter();
+  }
   const generatePDF = async () => {
     if (eligibility) {
       const content = pdfRef.current;
@@ -45,27 +48,24 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
     })
       .then(res => res.json())
       .then(data => {
-        setSize(1)
         console.log("letter: ", data);
         setLetter(data);
       })
       .catch(error => console.log("error: ", error))
     setResultLoading(false);
   }
-
-  const splitLetter = letterResult?.data?.claimLetter
-    .split('\n')
+  const splitLetter = letterResult?.data?.claimLetter?.split('\n')
     .map((paragraph, index) => <span key={index}>{paragraph}<br /></span>);
 
-  const handleBack = () => {
-    setEligibility();
-    setLetter();
-  }
+  var size = Object.keys(letterResult).length;
+  console.log(eligibleResult.data, size, letterResult, eligibility);
+
+
   return (
     <div className="m-5">
-      <h1 className="text-center text-xl">{size === 0 ? "Result" : "Claim Letter"} For Disrupted Flight</h1>
-      <div className="pt-4">
-        <div className="flex gap-2 justify-end">
+      <h1 className="text-center text-xl">Result For Disrupted Flight</h1>
+      <div>
+        <div className="flex gap-2 justify-end pt-4">
           <div>
             <button
               onClick={handleBack}
@@ -79,34 +79,36 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
           </div>
           {
             size !== 0 &&
-            <>
-              <div>
-                <button
-                  onClick={handleClaimLetter}
-                  className="rounded-full flex justify-center items-center gap-1 bg-rose-700 text-white px-3 py-1"
-                >
-                  <p>
-                    <AiOutlineReload></AiOutlineReload>
-                  </p>{" "}
-                  <p>Regenerate</p>
-                </button>
-              </div>
-              <div>
-                <button
-                  onClick={generatePDF}
-                  className="rounded-full flex justify-center items-center gap-1 bg-rose-700 text-white px-3 py-1"
-                >
-                  <p>
-                    <FaFilePdf></FaFilePdf>
-                  </p>{" "}
-                  <p>PDF</p>
-                </button>
-              </div>
-            </>
+            <div>
+              <button
+                onClick={handleClaimLetter}
+                className="rounded-full flex justify-center items-center gap-1 bg-rose-700 text-white px-3 py-1"
+              >
+                <p>
+                  <AiOutlineReload></AiOutlineReload>
+                </p>{" "}
+                <p>Regenerate</p>
+              </button>
+            </div>
+          }
+          {
+            size !== 0 &&
+            <div>
+              <button
+                onClick={generatePDF}
+                className="rounded-full flex justify-center items-center gap-1 bg-rose-700 text-white px-3 py-1"
+              >
+                <p>
+                  <FaFilePdf></FaFilePdf>
+                </p>{" "}
+                <p>PDF</p>
+              </button>
+            </div>
           }
 
         </div>
         <div className="py-7" >
+          {/* for loading */}
           <div>
             {
               resultLoading === true &&
@@ -129,37 +131,33 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
               ""
             }
           </div>
-          {/* Reason for eligibility and claim letter */}
+          {/* reason for eligible and not eligible and claim letter */}
           <div>
             {
               size === 0 ?
+                // {/* reason for eligible and not eligible */}
                 eligibility ?
-                  <>
-                    {
-                      splitAnswer.filter(ans => ans !== "Eligibility: TRUE").map((ans, i) => <p key={i} className="pb-2">{ans}</p>)
-                    }
-                  </>
+                  splitAnswer?.filter(ans => ans !== "Eligibility: TRUE").map((ans, i) => <p key={i} className="pb-2">{ans}</p>)
                   :
-                  <>
-                    {
-                      splitAnswer.filter(ans => ans !== "Eligibility: FALSE").map((ans, i) => <p key={i} className="pb-2">{ans}</p>)
-                    }
-                  </>
+                  splitAnswer?.filter(ans => ans !== "Eligibility: FALSE").map((ans, i) => <p key={i} className="pb-2">{ans}</p>)
                 :
+                //{/* claim letter */}
                 <div ref={pdfRef}>
                   <div style={{ whiteSpace: 'pre-line' }}>{splitLetter}</div>
+
                 </div>
             }
           </div>
+          {/* Next button */}
           <div className="pt-2">
             {
-              size === 0 && eligibility &&
+              eligibility && size === 0 &&
               <>
                 <p className="text-center text-rose-700">Clicking the next button generates a claim letter that you can save or download. <br />
                   You can submit this to {dataForClaim?.airlineName} or the relevant authorities.
                 </p>
                 <p className="flex justify-center pt-3">
-                  <button onClick={handleClaimLetter} className="rounded-full flex justify-center items-center gap-1 bg-cyan-600 hover:bg-cyan-800 text-white px-5 py-1">Next</button>
+                  <button onClick={handleClaimLetter} className="rounded-full flex justify-center items-center gap-1 bg-yellow-500 hover:bg-yellow-800 text-white px-5 py-1">Next</button>
                 </p>
               </>
             }

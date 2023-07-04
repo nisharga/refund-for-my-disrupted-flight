@@ -10,7 +10,7 @@ const MultiStepForm = () => {
   const { user } = useContext(AuthContext);
   const [step, setStep] = useState(1);
   const [eligibility, setEligibility] = useState();
-  const [letter, setLetter] = useState();
+  const [letter, setLetter] = useState({});
   const [resultLoading, setResultLoading] = useState(false);
   const [dataForClaim, setDataForClaim] = useState();
   // const eligibility = {
@@ -141,6 +141,12 @@ const MultiStepForm = () => {
     messageSummary: "",
   });
 
+  /*
+  State: step,input data
+  1st form: next button === setStep(step+1)
+  inputData must be contorled form // usecontex
+*/
+
   const handleNext = () => {
     if (formData?.airLineName !== "" &&
       formData?.flightNumber !== "" &&
@@ -184,7 +190,7 @@ const MultiStepForm = () => {
       .then(res => res.json())
       .then(data => {
         console.log("eligibility: ", data);
-        setEligibility(data);
+        // setEligibility(data);
       })
       .catch(error => console.log(error))
 
@@ -212,27 +218,18 @@ const MultiStepForm = () => {
     newData = {
       ...newData, fullName: user?.displayName, meal: mealAmount, accommodation: accommodationAmount, transportation: transportationAmount, others: othersAmount
     }
+    setDataForClaim(newData);
     console.log(newData);
-    setDataForClaim(newData)
-    
-
     setResultLoading(false);
   };
-  console.log(formData);
 
   return (
     <div className={`block mx-auto ${resultLoading && "lg:h-[90%]"}`}>
       <div className={`p-6 w-full lg:w-10/12 mx-auto ${resultLoading && "h-full"}`}>
         {
-          // 
           eligibility ?
-            <Result 
-            eligibleResult={eligibility} 
-            letterResult={letter}  
-            setEligibility={setEligibility} setLetter={setLetter}
-            dataForClaim={dataForClaim}
-            resultLoading={resultLoading}
-            setResultLoading={setResultLoading}></Result>
+
+            <Result eligibleResult={eligibility} letterResult={letter} setEligibility={setEligibility} setLetter={setLetter} dataForClaim={dataForClaim}></Result>
             :
             resultLoading ?
               <>
