@@ -10,7 +10,7 @@ const MultiStepForm = () => {
   const { user } = useContext(AuthContext);
   const [step, setStep] = useState(1);
   const [eligibility, setEligibility] = useState();
-  const [letter, setLetter] = useState();
+  const [letter, setLetter] = useState({});
   const [resultLoading, setResultLoading] = useState(false);
   const [dataForClaim, setDataForClaim] = useState();
   // const eligibility = {
@@ -136,11 +136,16 @@ const MultiStepForm = () => {
     reasonForDisruption: "",
     boardingPassNumber: "",
     boardingPassDate: "",
-    isRecipt: "no",
     receiptDetails: [{ receiptName: "", receiptAmount: "" }],
     emailSummary: "",
     messageSummary: "",
   });
+
+  /*
+  State: step,input data
+  1st form: next button === setStep(step+1)
+  inputData must be contorled form // usecontex
+*/
 
   const handleNext = () => {
     if (formData?.airLineName !== "" &&
@@ -185,7 +190,7 @@ const MultiStepForm = () => {
       .then(res => res.json())
       .then(data => {
         console.log("eligibility: ", data);
-        setEligibility(data);
+        // setEligibility(data);
       })
       .catch(error => console.log(error))
 
@@ -213,27 +218,18 @@ const MultiStepForm = () => {
     newData = {
       ...newData, fullName: user?.displayName, meal: mealAmount, accommodation: accommodationAmount, transportation: transportationAmount, others: othersAmount
     }
-    console.log(newData);
-
     setDataForClaim(newData);
+    console.log(newData);
     setResultLoading(false);
   };
-  console.log(formData);
 
   return (
     <div className={`block mx-auto ${resultLoading && "lg:h-[90%]"}`}>
       <div className={`p-6 w-full lg:w-10/12 mx-auto ${resultLoading && "h-full"}`}>
         {
-          // 
           eligibility ?
-            <Result
-              eligibleResult={eligibility}
-              letterResult={letter}
-              setEligibility={setEligibility} setLetter={setLetter}
-              dataForClaim={dataForClaim}
-              resultLoading={resultLoading}
-              setResultLoading={setResultLoading}>
-            </Result>
+
+            <Result eligibleResult={eligibility} letterResult={letter} setEligibility={setEligibility} setLetter={setLetter} dataForClaim={dataForClaim}></Result>
             :
             resultLoading ?
               <>
@@ -255,20 +251,14 @@ const MultiStepForm = () => {
             } p-2 text-center cursor-pointer`}
                     onClick={() => setStep(1)}
                   >
-                    <div className="flex items-center justify-center">
-                      <p className={`px-2  rounded-full border ${step === 1 ? "border-sky-500 shadow-md" : "border-slate-400"} mr-1.5`}>1</p>
-                      <p>Flight Details</p>
-                    </div>
+                    Step 1
                   </div>
                   <div
                     className={`w-1/2 ${step === 2 ? "bg-blue-500 text-white" : "bg-gray-200 rounded-r-md"
                       } p-2 text-center cursor-pointer`}
                     onClick={() => setStep(2)}
                   >
-                    <div className="flex items-center justify-center">
-                      <p className={`px-2  rounded-full border ${step === 2 ? "border-sky-500 shadow-md" : "border-slate-400"} mr-1.5`}>2</p>
-                      <p>Communication Details</p>
-                    </div>
+                    Step 2
                   </div>
                 </div>
                 {step === 1 ? (
@@ -314,8 +304,8 @@ const MultiStepForm = () => {
                         formData?.reasonForDisruption &&
                         formData?.boardingPassNumber &&
                         formData?.boardingPassDate
-                        ? "bg-blue-500 hover:bg-blue-600  px-6 py-1.5 rounded-lg text-white"
-                        : "bg-blue-300 px-6 py-1.5 rounded-lg text-white cursor-not-allowed"
+                        ? "bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg text-white"
+                        : "bg-blue-300 px-8 py-3 rounded-lg text-white cursor-not-allowed"
                         }`}
                       onClick={handleNext}
                       disabled={

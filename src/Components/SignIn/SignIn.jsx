@@ -28,6 +28,7 @@ const SignIn = () => {
         const user = res.user;
         console.log(user);
         reset();
+        navigate('/');
       })
       .catch((err) => setSignInError(err.message));
   };
