@@ -165,7 +165,7 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Reason for Disruption
             </label>
-            <div className="w-full p-3 bg-white mx-auto border border-gray-400 rounded flex justify-end items-center h-10">
+            <div className="w-full bg-white mx-auto border border-gray-400 rounded flex justify-end items-center h-10">
               <select
                 onChange={(e) =>
                   setFormData({
@@ -174,7 +174,7 @@ const Step1 = ({ setFormData, formData }) => {
                   })
                 }
                 defaultValue={formData?.reasonForDisruption === ""? "": formData?.reasonForDisruption}
-                className="w-full outline-none border-gray-400"
+                className="w-full px-3 outline-none border-gray-400"
                 required
               >
                 <option>
@@ -183,6 +183,9 @@ const Step1 = ({ setFormData, formData }) => {
                 <option value="Delay">Delay</option>
                 <option value="Cancellation">Cancellation</option>
                 <option value="Overbooking">Overbooking</option>
+                <option value="Overbooking">Bad Weather</option>
+                <option value="Overbooking">Technical Problem</option>
+                <option value="Overbooking">Don't Remember</option>
               </select>
             </div>
           </div>
