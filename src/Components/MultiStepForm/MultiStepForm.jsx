@@ -136,6 +136,7 @@ const MultiStepForm = () => {
     reasonForDisruption: "",
     boardingPassNumber: "",
     boardingPassDate: "",
+    isRecipt: "no",
     receiptDetails: [{ receiptName: "", receiptAmount: "" }],
     emailSummary: "",
     messageSummary: "",
@@ -213,9 +214,8 @@ const MultiStepForm = () => {
       ...newData, fullName: user?.displayName, meal: mealAmount, accommodation: accommodationAmount, transportation: transportationAmount, others: othersAmount
     }
     console.log(newData);
-    setDataForClaim(newData)
-    
 
+    setDataForClaim(newData);
     setResultLoading(false);
   };
   console.log(formData);
@@ -232,7 +232,8 @@ const MultiStepForm = () => {
             setEligibility={setEligibility} setLetter={setLetter}
             dataForClaim={dataForClaim}
             resultLoading={resultLoading}
-            setResultLoading={setResultLoading}></Result>
+            setResultLoading={setResultLoading}>
+            </Result>
             :
             resultLoading ?
               <>

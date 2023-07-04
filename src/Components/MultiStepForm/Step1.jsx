@@ -173,7 +173,7 @@ const Step1 = ({ setFormData, formData }) => {
                     reasonForDisruption: e.target.value,
                   })
                 }
-                // defaultValue={formData?.reasonForDisruption === ""? "DEFAULT": formData?.reasonForDisruption}
+                defaultValue={formData?.reasonForDisruption === ""? "": formData?.reasonForDisruption}
                 className="w-full outline-none border-gray-400"
                 required
               >
