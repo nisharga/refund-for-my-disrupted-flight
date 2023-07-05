@@ -1,30 +1,52 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from '../../Assets/logo.png';
+import { FaExternalLinkAlt, FaHistory } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { MdSubscriptions, MdPolicy } from "react-icons/md";
+import { SlEnvolopeLetter } from "react-icons/sl";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Sidebar = () => {
+  const { logOut, user } = useContext(AuthContext);
+  const logout = () => {
+    logOut()
+      .then()
+      .catch(error => console.log(error))
+  }
   return (
-    <div>
-      <div className="px-4 py-10 grid grid-cols-1 justify-items-center h-screen">
-        <div className="pt-4">
-          <img src={logo} alt="" className="rounded-full" />
-        </div>
-        <p className="px-4 text-center">Navigating your flight compensation journey. Our expert analysis matches airline policies with your details, delivering instant eligibility verdicts. Whether eligible or not, we provide clear explanations and personalized claim letters, empowering you to take control.</p>
-        <div className="pt-6">
-          <div>
-            <label htmlFor="">
-              <h2 className="text-lg text-center">Subscribe for newsletter</h2>
-            </label>
-          </div>
-          <div>
-            <input type="text" className="border w-full max-w-xs h-10 rounded-lg px-6" placeholder="Enter Your Email" />
-          </div>
-        </div>
-        <p className="text-center text-sm px-6">
-          Copyright ©2023 All rights reserved | This website is made with by Machine Minds Team.
-        </p>
+    <>
+      <div className="text-white px-8 pb-5 text-lg space-y-3 h-full flex flex-col justify-end">
+        <Link to="/" className="flex items-center gap-6">
+          <p><MdPolicy></MdPolicy></p><p>Home</p>
+        </Link>
+        <Link to="/policies" className="flex items-center gap-6">
+          <p><MdPolicy></MdPolicy></p><p>Airlines Policy</p>
+        </Link>
+        <Link to="/eligible_history" className="flex items-center gap-6">
+          <p><FaHistory></FaHistory></p><p>Eligible History</p>
+        </Link>
+        <Link to="/letter_history" className="flex items-center gap-6">
+          <p><SlEnvolopeLetter></SlEnvolopeLetter></p><p>Claim Letter History</p>
+        </Link>
+        <Link to="/subscription" className="flex items-center gap-6">
+          <p><MdSubscriptions></MdSubscriptions></p><p>Subscriptions</p>
+        </Link>
+        {
+          user ?
+            <Link className="flex items-center gap-6" onClick={logout}>
+              <p><FiLogOut></FiLogOut></p><p>Log Out</p>
+            </Link>
+            :
+            <Link to="/login" className="flex items-center gap-6">
+              <p><FiLogOut></FiLogOut></p><p>Log in</p>
+            </Link>
+        }
+        <Link to="/feedback_contact" className="flex items-center gap-6">
+          <p><FaExternalLinkAlt></FaExternalLinkAlt></p><p>Feedback & Contact</p>
+        </Link>
       </div>
-
-    </div>
+    </>
 
   );
 };

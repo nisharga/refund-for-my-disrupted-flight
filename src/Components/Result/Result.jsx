@@ -99,7 +99,7 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
                   <p>
                     <FaFilePdf></FaFilePdf>
                   </p>{" "}
-                  <p>PDF</p>
+                  <p>Save</p>
                 </button>
               </div>
             </>

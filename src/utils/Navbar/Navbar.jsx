@@ -28,6 +28,21 @@ const Navbar = () => {
         >
             Airlines Policies
         </Link>
+        <Link to="/policies"
+            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            Eligible History
+        </Link>
+        <Link to="/policies"
+            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            Claim Letter History
+        </Link>
+        <Link to="/policies"
+            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+        >
+            Subscription
+        </Link>
         <Link
             className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
             to='/feedback_contact'
@@ -59,18 +74,18 @@ const Navbar = () => {
         <>
             <nav className="bg-gray-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center justify-between lg:justify-center h-16">
                         <div className="flex items-center">
                             <div className="flex-shrink-0 flex gap-1 items-center">
                                 <img className='h-5 w-5 rounded-full' src={logo} alt="" />
-                                <span className="text-white">AI AirAssistant</span>
+                                <span className="text-white">Refund For My Disrupted Flight</span>
                             </div>
                         </div>
-                        <div className="hidden md:block">
+                        {/* <div className="hidden md:block">
                             <div className="ml-4 flex items-center">
                                 {content}
                             </div>
-                        </div>
+                        </div> */}
                         <div className="-mr-2 flex md:hidden">
                             <button
                                 onClick={toggleMenu}

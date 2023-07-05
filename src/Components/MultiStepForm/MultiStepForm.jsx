@@ -246,7 +246,7 @@ const MultiStepForm = () => {
                 <h2 className="text-lg font-medium mb-4">Step {step} of 2</h2>
                 <div className="flex mb-4">
                   <div
-                    className={`w-1/2  rounded-l-md ${step === 1
+                    className={`w-1/2  rounded-l-md flex items-center justify-center ${step === 1
                       ? "bg-blue-500 text-white"
                       : formData?.name && formData?.email
                         ? "bg-blue-500 text-white"
@@ -255,17 +255,17 @@ const MultiStepForm = () => {
             } p-2 text-center cursor-pointer`}
                     onClick={() => setStep(1)}
                   >
-                    <div className="flex items-center justify-center">
+                    <div className="flex flex-col md:flex-row items-center justify-center">
                       <p className={`px-2  rounded-full border ${step === 1 ? "border-sky-500 shadow-md" : "border-slate-400"} mr-1.5`}>1</p>
                       <p>Flight Details</p>
                     </div>
                   </div>
                   <div
-                    className={`w-1/2 ${step === 2 ? "bg-blue-500 text-white" : "bg-gray-200 rounded-r-md"
+                    className={`w-1/2 flex items-center justify-center ${step === 2 ? "bg-blue-500 text-white" : "bg-gray-200 rounded-r-md"
                       } p-2 text-center cursor-pointer`}
                     onClick={() => setStep(2)}
                   >
-                    <div className="flex items-center justify-center">
+                    <div className="flex flex-col md:flex-row items-center justify-center">
                       <p className={`px-2  rounded-full border ${step === 2 ? "border-sky-500 shadow-md" : "border-slate-400"} mr-1.5`}>2</p>
                       <p>Communication Details</p>
                     </div>
