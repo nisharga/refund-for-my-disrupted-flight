@@ -19,32 +19,32 @@ const Navbar = () => {
     }
     const content = <>
         <Link to="/"
-            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
         >
             Home
         </Link>
         <Link to="/policies"
-            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
         >
             Airlines Policies
         </Link>
         <Link to="/policies"
-            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
         >
             Eligible History
         </Link>
         <Link to="/policies"
-            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
         >
             Claim Letter History
         </Link>
         <Link to="/policies"
-            className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
         >
             Subscription
         </Link>
         <Link
-            className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
             to='/feedback_contact'
         >
             Feedback & Contact
@@ -54,14 +54,14 @@ const Navbar = () => {
             user ?
                 <Link onClick={logout}
 
-                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+                    className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
                 >
                     Logout
                 </Link>
                 :
                 <Link
 
-                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700"
+                    className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
                 >
                     Login
                 </Link>
@@ -120,7 +120,7 @@ const Navbar = () => {
                 </div>
                 {isOpen && (
                     <div className="md:hidden">
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col divide-y-2">
                             {content}
                         </div>
                     </div>
