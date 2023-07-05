@@ -37,31 +37,31 @@ const SignIn = () => {
   const handleGoogleSignIn = () => {
     googlesignIn()
       .then((res) => {
-        const user = res.user;
-        console.log(user);
-        navigate('/');
+        // const user = res.user;
+        // console.log(user);
+        // navigate('/');
 
         
   
         // Send user data to the backend
         
-        // const user = res.user;
-        // const { displayName, email, photoURL } = user;
-        // fetch('http://localhost:5000/api/v1/users', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({ name: displayName, email, photoUrl: photoURL }),
-        // })
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     console.log(data); // Handle the response from the backend if needed
-        //     navigate('/');
-        //   })
-        //   .catch((error) => {
-        //     console.error(error);
-        //   });
+        const user = res.user;
+        const { displayName, email, photoURL } = user;
+        fetch('http://localhost:5000/api/v1/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: displayName, email, photoUrl: photoURL }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data); // Handle the response from the backend if needed
+            navigate('/');
+          })
+          .catch((error) => {
+            console.error(error);
+          });
           
         // backendsend code finished
       })
