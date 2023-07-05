@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import logo from '../../Assets/logo.png';
 import { FaExternalLinkAlt, FaHistory } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiHome } from "react-icons/fi";
 import { MdSubscriptions, MdPolicy } from "react-icons/md";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { Link } from "react-router-dom";
@@ -18,25 +17,28 @@ const Sidebar = () => {
     <>
       <div className="text-white px-8 pb-5 text-lg space-y-3 h-full flex flex-col justify-end">
         <Link to="/" className="flex items-center gap-6">
-          <p><MdPolicy></MdPolicy></p><p>Home</p>
+          <p><FiHome></FiHome></p><p>Home</p>
         </Link>
-        <Link to="/policies" className="flex items-center gap-6">
-          <p><MdPolicy></MdPolicy></p><p>Airlines Policy</p>
-        </Link>
-        <Link to="/eligible_history" className="flex items-center gap-6">
-          <p><FaHistory></FaHistory></p><p>Eligible History</p>
-        </Link>
-        <Link to="/letter_history" className="flex items-center gap-6">
-          <p><SlEnvolopeLetter></SlEnvolopeLetter></p><p>Claim Letter History</p>
-        </Link>
-        <Link to="/subscription" className="flex items-center gap-6">
-          <p><MdSubscriptions></MdSubscriptions></p><p>Subscriptions</p>
-        </Link>
+
         {
           user ?
-            <Link className="flex items-center gap-6" onClick={logout}>
-              <p><FiLogOut></FiLogOut></p><p>Log Out</p>
-            </Link>
+            <>
+              <Link to="/policies" className="flex items-center gap-6">
+                <p><MdPolicy></MdPolicy></p><p>Airlines Policy</p>
+              </Link>
+              <Link to="/eligible_history" className="flex items-center gap-6">
+                <p><FaHistory></FaHistory></p><p>Eligible History</p>
+              </Link>
+              <Link to="/letter_history" className="flex items-center gap-6">
+                <p><SlEnvolopeLetter></SlEnvolopeLetter></p><p>Claim Letter History</p>
+              </Link>
+              <Link to="/subscription" className="flex items-center gap-6">
+                <p><MdSubscriptions></MdSubscriptions></p><p>Subscriptions</p>
+              </Link>
+              <Link className="flex items-center gap-6" onClick={logout}>
+                <p><FiLogOut></FiLogOut></p><p>Log Out</p>
+              </Link>
+            </>
             :
             <Link to="/login" className="flex items-center gap-6">
               <p><FiLogOut></FiLogOut></p><p>Log in</p>
