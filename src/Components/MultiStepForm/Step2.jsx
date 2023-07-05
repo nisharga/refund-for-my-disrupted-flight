@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Step2 = ({ setFormData, formData }) => {
-  const [isRecipt, setRecipt] = useState("no");
 
   const handleAddRecipt = () => {
     setFormData({
@@ -38,7 +37,7 @@ const Step2 = ({ setFormData, formData }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
           <button
             className="pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex items-center h-10 cursor-pointer"
-            onClick={() => setRecipt("no")}
+            onClick={() => setFormData({...formData,isRecipt:"no"})}
           >
             <input
               type="radio"
@@ -46,7 +45,7 @@ const Step2 = ({ setFormData, formData }) => {
               id="noReceipt"
               name="receiptDetails"
               value="no"
-              defaultChecked={isRecipt === "no"}
+              defaultChecked={formData?.isRecipt === "no"}
               required
             />
             <label
@@ -59,7 +58,7 @@ const Step2 = ({ setFormData, formData }) => {
           </button>
           <button
             className="pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex items-center h-10 cursor-pointer"
-            onClick={() => setRecipt("yes")}
+            onClick={() => setFormData({...formData,isRecipt:"yes"})}
           >
             <input
               type="radio"
@@ -67,7 +66,7 @@ const Step2 = ({ setFormData, formData }) => {
               id="yesRecipt"
               name="receiptDetails"
               value="yes"
-              defaultChecked={isRecipt === "yes"}
+              defaultChecked={formData?.isRecipt === "yes"}
               required
             />
             <label htmlFor="yesRecipt" className="ml-2 mr-4 text-gray-400">
@@ -76,7 +75,7 @@ const Step2 = ({ setFormData, formData }) => {
           </button>
         </div>
       </div>
-      {isRecipt === "yes" && (
+      {formData?.isRecipt === "yes" && (
         <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
           <h4 className="font-medium mb-2 text-lg text-gray-700">
             Add your receipt details
@@ -150,6 +149,7 @@ const Step2 = ({ setFormData, formData }) => {
               Email Communication Summary
             </label>
             <textarea
+            defaultValue={formData?.emailSummary}
               className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${!formData?.airLineName && "cursor-not-allowed"
                 }`}
               rows={10}
@@ -173,6 +173,7 @@ const Step2 = ({ setFormData, formData }) => {
               Message Exchange Summary
             </label>
             <textarea
+              defaultValue={formData?.messageSummary}
               className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${!formData?.airLineName && "cursor-not-allowed"
                 }`}
               rows={10}

@@ -4,17 +4,17 @@ import Sidebar from "../Components/Sidebar/Sidebar";
 import Navbar from './../Utils/Navbar/Navbar';
 const Main = () => {
   return (
-    <div>
+    <>
       <div className="flex relative">
-        <div className="hidden lg:block lg:w-[25%] bg-[#e8eef1] h-screen sticky top-0">
+        <div className="hidden lg:block lg:w-[22%] bg-gray-800 h-screen sticky top-0">
           <Sidebar />
         </div>
-        <div className="w-full lg:w-[75%]  bg-white">
+        <div className="w-full lg:w-[78%] bg-white overflow-y-scroll">
           <Navbar />
           <Outlet />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
