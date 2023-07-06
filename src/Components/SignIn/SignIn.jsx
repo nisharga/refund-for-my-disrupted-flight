@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { BsGoogle } from "react-icons/bs";
+import { GrFacebook } from "react-icons/gr";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
-import { GrFacebook } from "react-icons/gr";
-import { BsGoogle } from "react-icons/bs";
 
 const SignIn = () => {
   const {
@@ -28,7 +28,7 @@ const SignIn = () => {
         const user = res.user;
         console.log(user);
         reset();
-        navigate('/');
+        navigate("/");
       })
       .catch((err) => setSignInError(err.message));
   };
@@ -40,12 +40,10 @@ const SignIn = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate('/');
+        navigate("/");
 
-        
-  
         // Send user data to the backend
-        
+
         // const user = res.user;
         // const { displayName, email, photoURL } = user;
         // fetch('http://localhost:5000/api/v1/users', {
@@ -63,7 +61,7 @@ const SignIn = () => {
         //   .catch((error) => {
         //     console.error(error);
         //   });
-          
+
         // backendsend code finished
       })
       .catch((err) => console.log(err));
@@ -113,13 +111,19 @@ const SignIn = () => {
         </div>
         <div className="flex justify-center text-white gap-5">
           <button className="bg-blue-500 flex justify-center items-center gap-2 align-middle  hover:bg-blue-400 duration-300 py-2 w-1/2 rounded-md">
-            <p><GrFacebook></GrFacebook> </p><p>Facebook{" "}</p>
+            <p>
+              <GrFacebook></GrFacebook>{" "}
+            </p>
+            <p>Facebook </p>
           </button>
           <button
             onClick={handleGoogleSignIn}
             className="bg-red-500  hover:bg-red-400 duration-300 flex justify-center items-center gap-2 py-2 w-1/2 rounded-md "
           >
-            <p><BsGoogle></BsGoogle></p> <p>Google{" "}</p>
+            <p>
+              <BsGoogle></BsGoogle>
+            </p>{" "}
+            <p>Google </p>
           </button>
         </div>
         <p className="mt-10 text-center">

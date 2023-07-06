@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { FaFacebookF, FaGithub, FaPhone, FaEnvelope, FaWhatsapp } from "react-icons/fa";
-import { BsDribbble, BsTwitter } from "react-icons/bs";
-import { AiOutlineStar } from "react-icons/ai";
 import { toast } from 'react-hot-toast';
+import { AiOutlineStar } from "react-icons/ai";
+import { BsDribbble, BsTwitter } from "react-icons/bs";
+import { FaEnvelope, FaFacebookF, FaGithub, FaPhone, FaWhatsapp } from "react-icons/fa";
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Contact = () => {
