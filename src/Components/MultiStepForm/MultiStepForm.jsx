@@ -321,12 +321,17 @@ const MultiStepForm = () => {
                       Previous
                     </button>
 
-                    {formData?.airLineName &&
-                      formData?.flightNumber &&
-                      formData?.dateOfDisruption &&
-                      formData?.reasonForDisruption &&
+                    {formData?.airLineId &&
+                      formData?.airLineName &&
+                      formData?.airLineId &&
+                      formData?.boardingPassDate &&
                       formData?.boardingPassNumber &&
-                      formData?.boardingPassDate && (
+                      formData?.dateOfDisruption &&
+                      formData?.emailSummary &&
+                      formData?.flightNumber &&
+                      formData?.isRecipt &&
+                      formData?.messageSummary &&
+                      formData?.reasonForDisruption && (
                         <form onSubmit={onSubmitFormData}>
                           <button
                             type="submit"

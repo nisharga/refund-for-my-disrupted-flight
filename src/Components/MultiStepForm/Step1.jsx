@@ -112,15 +112,19 @@ const Step1 = ({ setFormData, formData }) => {
               </span>
 
               <input
-                type="text"
+                type="number"
                 // className={`ml-1 w-full border-none outline-none ${
                 //   !formData?.airLineName && "cursor-not-allowed"
                 // }`}
                 className={`ml-1 w-full border-none outline-none px-2`}
                 placeholder="1234"
+                // value={formData?.flightNumber}
                 value={formData?.flightNumber}
                 onChange={(e) =>
-                  setFormData({ ...formData, flightNumber: e.target.value })
+                  setFormData({
+                    ...formData,
+                    flightNumber: Number(e.target.value),
+                  })
                 }
                 required
               />
@@ -205,7 +209,7 @@ const Step1 = ({ setFormData, formData }) => {
                 {formData.airLineId ? formData.airLineId : "DL"}
               </span>
               <input
-                type="text"
+                type="number"
                 className="ml-1 w-full border-none outline-none px-2"
                 placeholder="1234"
                 value={formData?.boardingPassNumber}
