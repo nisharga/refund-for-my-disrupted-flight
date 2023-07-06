@@ -26,7 +26,7 @@ const Contact = () => {
             suggestions
         }
         console.log(formData);
-        fetch("http://localhost:5000/api/v1/query", {
+        fetch("https://defiant-toad-gear.cyclic.app/api/v1/query", {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

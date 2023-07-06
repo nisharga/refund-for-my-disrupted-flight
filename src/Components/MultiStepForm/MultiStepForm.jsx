@@ -175,7 +175,7 @@ const MultiStepForm = () => {
       messageExchangeSummary: formData?.messageSummary
     }
     setResultLoading(true);
-    await fetch('http://localhost:5000/api/v1/eligibility', {
+    await fetch('https://defiant-toad-gear.cyclic.app/api/v1/eligibility', {
       method: "POST",
       headers: {
         'content-type': 'application/json',

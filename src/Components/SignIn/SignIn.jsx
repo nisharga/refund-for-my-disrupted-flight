@@ -40,7 +40,7 @@ const SignIn = () => {
       .then((res) => {
         // const user = res.user;
         // console.log(user);
-        // navigate('/');
+        navigate('/');
 
         
   
@@ -48,7 +48,7 @@ const SignIn = () => {
         
         const user = res.user;
         const { displayName, email, photoURL } = user;
-        fetch('http://localhost:5000/api/v1/users', {
+        fetch('https://defiant-toad-gear.cyclic.app/api/v1/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
