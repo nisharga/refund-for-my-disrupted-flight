@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { FaExternalLinkAlt, FaHistory } from "react-icons/fa";
 import { FiLogOut, FiHome, FiLogIn } from "react-icons/fi";
 import { MdPolicy } from "react-icons/md";
-import { SlEnvolopeLetter } from "react-icons/sl";
-import { Link } from "react-router-dom";
+import { SlEnvolopeLetter } from "react-icons/sl"; 
 import { AuthContext } from "../../Context/AuthProvider";
 import CustomLinks from "../../router/CustomLinks/CustomsLinks";
 

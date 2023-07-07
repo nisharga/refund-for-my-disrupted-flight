@@ -1,4 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import CloseIconSVG from "./LetterHistoryParts/CloseIconSVG";
+import LetterHistoryContent from "./LetterHistoryParts/LetterHistoryContent";
+import LetterHistoryTitle from "./LetterHistoryParts/LetterHistoryTitle";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { FiTrash2 } from "react-icons/fi";
 
 const LetterHistory = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,42 +32,51 @@ const LetterHistory = () => {
     };
   }, []);
 
+  const handleDelet = () => {
+    confirmAlert({
+      title: "Confirm to Delete",
+      message: "Are you sure to Delete Your Claim Letter History?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            alert("HI");
+          },
+        },
+        {
+          label: "No",
+          onClick: () => "",
+        },
+      ],
+    });
+  };
   return (
-    <div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={handleOpenModal}
-      >
-        Open Modal
-      </button>
-      {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="bg-white w-1/2 rounded-lg" ref={modalRef}>
-            <div className="flex justify-end">
-              <button className="p-2" onClick={handleCloseModal}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-500 hover:text-gray-700"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="p-4">
-              <h2>Modal Content</h2>
-              <p>This is the content of the modal.</p>
-            </div>
-          </div>
+    <div className={`block mx-auto  `}>
+      <div className={`p-6 w-full lg:w-10/12 mx-auto flex  items-center`}>
+        <div>
+          <b>1.</b>
         </div>
-      )}
+        <div className="px-3">
+          <LetterHistoryTitle handleOpenModal={handleOpenModal} />
+          {isOpen && (
+            <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
+              <div className="bg-white w-1/2 rounded-lg" ref={modalRef}>
+                <div className="flex justify-end">
+                  <button className="p-2" onClick={handleCloseModal}>
+                    <CloseIconSVG />
+                  </button>
+                </div>
+                <div className="p-4">
+                  <LetterHistoryContent name="NK" />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <button onClick={handleDelet}>
+          <FiTrash2 />
+        </button>
+      </div>
     </div>
   );
 };
