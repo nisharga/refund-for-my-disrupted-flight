@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -9,33 +9,27 @@ const SignUp = () => {
   const navigate = useNavigate();
   const {
     register,
-    watch,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
   const { createUser, googlesignIn } = useContext(AuthContext);
-  const [signUpError, setSignUpError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleSignUp = (data) => {
-    setSignUpError("");
     const email = data.email;
     const password = data.password;
 
     createUser(email, password)
       .then((res) => {
-        const user = res.user;
         reset();
         navigate('/');
       })
-      .catch((err) => setSignUpError(err.message));
+      .catch((err) => console.log(err.message));
   };
 
   const handleGoogleSignIn = () => {
     googlesignIn()
       .then((res) => {
-        const user = res.user;
       })
       .catch((err) => console.log(err));
   };
@@ -87,7 +81,6 @@ const SignUp = () => {
             type="submit"
             className="w-full my-5 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-400 duration-300"
           >
-            {loading ? "loading.." : "Sign up"}
           </button>
         </form>
         <div className="flex items-center gap-3 mb-3">
