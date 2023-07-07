@@ -6,7 +6,7 @@ import { FiTrash2 } from "react-icons/fi";
 import LetterHistoryPopupSection from "./LetterHistoryParts/LetterHistoryPopupSection";
 import { AuthContext } from "../../Context/AuthProvider";
 import CloseIconSVG from "./LetterHistoryParts/CloseIconSVG";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const LetterHistory = () => {
@@ -16,7 +16,7 @@ const LetterHistory = () => {
   const [data, setData] = useState();
   const [selectedVal, setSelectedVal] = useState(null);
   const [deleted, setDeleted] = useState(false);
-
+  const navigate = useNavigate();
   const handleOpenModal = (val) => {
     setSelectedVal(val);
     setIsOpen(true);
@@ -74,7 +74,7 @@ const LetterHistory = () => {
                 if (response.ok) {
                   toast.success("Delete Successfully!!");
                   setDeleted(true);
-                  Navigate("/");
+                  navigate("/");
                 } else {
                   throw new Error("Error deleting user");
                 }
