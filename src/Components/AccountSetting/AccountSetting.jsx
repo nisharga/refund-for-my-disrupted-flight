@@ -4,7 +4,7 @@ import EmailSVG from "./AccountSettingParts/EmailSVG";
 import UserSVG from "./AccountSettingParts/UserSVG";
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
-import Breadcrumb from './../../utils/Common/Breadcrumb';
+import Breadcrumb from './../../Utils/Common/Breadcrumb';
 
 const AccountSetting = () => {
   const [avatar, setAvatar] = useState("");
