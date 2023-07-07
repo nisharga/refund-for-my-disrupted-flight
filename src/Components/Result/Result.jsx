@@ -9,6 +9,7 @@ import letterLoading from "../../Assets/letterLoading.gif";
 
 const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataForClaim, resultLoading, setResultLoading }) => {
   const pdfRef = useRef(null);
+  
   const [size, setSize] = useState(0);
   const { eligibility, answer } = eligibleResult?.data;
   const splitAnswer = answer.split("\n");
