@@ -5,7 +5,6 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { FiTrash2 } from "react-icons/fi";
 import LetterHistoryPopupSection from "./LetterHistoryParts/LetterHistoryPopupSection";
 import { AuthContext } from "../../Context/AuthProvider";
-import CloseIconSVG from "./LetterHistoryParts/CloseIconSVG";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 

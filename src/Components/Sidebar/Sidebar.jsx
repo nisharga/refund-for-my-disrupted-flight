@@ -26,9 +26,6 @@ const Sidebar = () => {
               <CustomLinks to="/policies" className="flex items-center gap-6 hover:text-sky-500">
                 <p><MdPolicy></MdPolicy></p><p>Airlines Policy</p>
               </CustomLinks>
-              <CustomLinks to="/eligible_history" className="flex items-center gap-6 hover:text-sky-500">
-                <p><FaHistory></FaHistory></p><p>Eligible History</p>
-              </CustomLinks>
               <CustomLinks to="/letter_history" className="flex items-center gap-6 hover:text-sky-500">
                 <p><SlEnvolopeLetter></SlEnvolopeLetter></p><p>Claim Letter History</p>
               </CustomLinks>
