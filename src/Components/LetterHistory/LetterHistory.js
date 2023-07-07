@@ -5,20 +5,27 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { FiTrash2 } from "react-icons/fi";
 import LetterHistoryPopupSection from "./LetterHistoryParts/LetterHistoryPopupSection";
 import { AuthContext } from "../../Context/AuthProvider";
+import CloseIconSVG from "./LetterHistoryParts/CloseIconSVG";
+import { Navigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const LetterHistory = () => {
   const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
   const [data, setData] = useState();
+  const [selectedVal, setSelectedVal] = useState(null);
+  const [deleted, setDeleted] = useState(false);
 
-  // Modal Code
-  const handleOpenModal = () => {
+  const handleOpenModal = (val) => {
+    setSelectedVal(val);
     setIsOpen(true);
   };
+
   const handleCloseModal = () => {
     setIsOpen(false);
   };
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -32,7 +39,7 @@ const LetterHistory = () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-  // Modal Code
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,7 +56,7 @@ const LetterHistory = () => {
     fetchData();
   }, []);
 
-  const handleDelet = () => {
+  const handleDelet = (id) => {
     confirmAlert({
       title: "Confirm to Delete",
       message: "Are you sure to Delete Your Claim Letter History?",
@@ -57,7 +64,24 @@ const LetterHistory = () => {
         {
           label: "Yes",
           onClick: () => {
-            alert("HI");
+            fetch(
+              `https://defiant-toad-gear.cyclic.app/api/v1/letter/delete/${id}`,
+              {
+                method: "DELETE",
+              }
+            )
+              .then((response) => {
+                if (response.ok) {
+                  toast.success("Delete Successfully!!");
+                  setDeleted(true);
+                  Navigate("/");
+                } else {
+                  throw new Error("Error deleting user");
+                }
+              })
+              .catch((error) => {
+                console.error("Error deleting user:", error);
+              });
           },
         },
         {
@@ -67,7 +91,7 @@ const LetterHistory = () => {
       ],
     });
   };
-  console.log(data);
+
   return (
     <div className="block mx-auto">
       <h2 className="text-center mt-8 text-xl text-bold">
@@ -78,25 +102,28 @@ const LetterHistory = () => {
         )}
       </h2>
       <div>
-        {/* mapping data to show all data */}
         {data?.data.map((val, index) => (
           <div
-            className="p-6 w-full lg:w-10/12 mx-auto flex  items-center"
+            className="p-6 w-full lg:w-10/12 mx-auto flex items-center"
             key={index}
           >
             <div>
               <b>{index + 1}.</b>
             </div>
             <div className="px-3">
-              <LetterHistoryTitle handleOpenModal={handleOpenModal} val={val} />
-              {isOpen && (
+              <LetterHistoryTitle
+                handleOpenModal={() => handleOpenModal(val)}
+                val={val}
+              />
+              {isOpen && selectedVal && (
                 <LetterHistoryPopupSection
                   modalRef={modalRef}
                   handleCloseModal={handleCloseModal}
+                  selectedVal={selectedVal}
                 />
               )}
             </div>
-            <button onClick={handleDelet}>
+            <button onClick={() => handleDelet(val._id)}>
               <FiTrash2 />
             </button>
           </div>
