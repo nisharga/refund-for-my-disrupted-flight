@@ -9,9 +9,12 @@ const CustomLinks = ({ children, to, ...props }: LinkProps) => {
   return (
     <div>
       <Link
-        style={{ padding: '5px',
-        backgroundColor: isActive ? 'rgba(0, 0, 0, 0.3)' : '',
-        transition: 'background-color 0.3s', }}
+        style={{
+          padding: '5px',
+          backgroundColor: isActive ? 'rgba(0, 0, 0, 0.3)' : '',
+          transition: 'background-color 0.3s',
+          borderRadius: '0.35rem'
+        }}
         to={to}
         {...props}
       >

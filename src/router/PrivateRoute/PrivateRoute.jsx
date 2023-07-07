@@ -6,7 +6,6 @@ import loadingImg from '../../Assets/loading1.gif';
 const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext);
     const location = useLocation();
-    console.log(loading);
     if (loading) {
         return <div className='h-full flex justify-center items-center'>
             <img src={loadingImg} alt="" />

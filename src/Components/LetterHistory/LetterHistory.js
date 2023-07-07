@@ -44,7 +44,7 @@ const LetterHistory = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://defiant-toad-gear.cyclic.app/api/v1/letter/${user.email}`
+          `https://defiant-toad-gear.cyclic.app/api/v1/letter/${user?.email}`
         );
         const jsonData = await response.json();
         setData(jsonData);
@@ -54,7 +54,7 @@ const LetterHistory = () => {
     };
 
     fetchData();
-  }, []);
+  }, [user?.email]);
 
   const handleDelet = (id) => {
     confirmAlert({
@@ -110,7 +110,7 @@ const LetterHistory = () => {
             <div>
               <b>{index + 1}.</b>
             </div>
-            <div className="px-3">
+            <div className="px-3 ">
               <LetterHistoryTitle
                 handleOpenModal={() => handleOpenModal(val)}
                 val={val}

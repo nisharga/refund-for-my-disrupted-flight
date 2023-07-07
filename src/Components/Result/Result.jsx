@@ -9,11 +9,10 @@ import letterLoading from "../../Assets/letterLoading.gif";
 
 const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataForClaim, resultLoading, setResultLoading }) => {
   const pdfRef = useRef(null);
-  
+
   const [size, setSize] = useState(0);
   const { eligibility, answer } = eligibleResult?.data;
   const splitAnswer = answer.split("\n");
-  console.log("data for claim: ",dataForClaim);
 
   const generatePDF = async () => {
     if (eligibility) {
@@ -47,7 +46,6 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
       .then(res => res.json())
       .then(data => {
         setSize(1)
-        console.log("letter: ", data);
         setLetter(data);
       })
       .catch(error => console.log("error: ", error))

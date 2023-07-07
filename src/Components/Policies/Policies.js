@@ -19,7 +19,6 @@ const Policies = () => {
   const handleSearch = (e) => {
     const value = e.target.value;
     setSearchItem(value);
-    console.log(value);
     if (value === "") {
       setFilteredOptions([]);
     } else {
@@ -42,7 +41,6 @@ const Policies = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("policy: ", data);
         setPolicies(data.data.AirlinesPolicies);
       })
       .catch((error) => console.log("error: ", error));

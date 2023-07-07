@@ -8,7 +8,6 @@ import Breadcrumb from './../../utils/Common/Breadcrumb';
 
 const AccountSetting = () => {
   const [avatar, setAvatar] = useState("");
-  console.log('avatar', avatar);
   return (
     <>
       <div className="mx-auto max-w-270">

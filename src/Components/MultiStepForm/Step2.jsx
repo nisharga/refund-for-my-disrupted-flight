@@ -14,12 +14,9 @@ const Step2 = ({ setFormData, formData }) => {
 
   const handleRemoveRecipt = (i) => {
     const list = [...formData.receiptDetails];
-    console.log(i);
     list.splice(i, 1);
-    console.log(list);
     setFormData({ ...formData, receiptDetails: list });
   };
-  console.log("remove: ", formData?.receiptDetails);
 
   const handleReciptInputChange = (e, index) => {
     const { name, value } = e.target;
