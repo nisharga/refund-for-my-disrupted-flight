@@ -27,20 +27,10 @@ const Navbar = () => {
         >
             Airlines Policies
         </Link>
-        <Link to="/policies"
-            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
-        >
-            Eligible History
-        </Link>
-        <Link to="/policies"
+        <Link to="/letter_history"
             className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
         >
             Claim Letter History
-        </Link>
-        <Link to="/policies"
-            className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
-        >
-            Subscription
         </Link>
         <Link
             className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
@@ -84,7 +74,7 @@ const Navbar = () => {
                                 {content}
                             </div>
                         </div> */}
-                        <div className="-mr-2 flex md:hidden">
+                        <div className="-mr-2 flex lg:hidden">
                             <button
                                 onClick={toggleMenu}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
@@ -117,7 +107,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 {isOpen && (
-                    <div className="md:hidden">
+                    <div className="lg:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col divide-y-2">
                             {content}
                         </div>
