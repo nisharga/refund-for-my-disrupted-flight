@@ -1,11 +1,12 @@
-import SignIn from "./Components/SignIn/SignIn";
-import SignUp from "./Components/SignUp/SignUp";
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
+import { router } from "./router/router";
+import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <div className="App">
-      <h1>This is default app</h1>
-      <SignIn></SignIn>
-      <SignUp></SignUp>
+      <RouterProvider router={router}></RouterProvider>
+      <Toaster />
     </div>
   );
 }
