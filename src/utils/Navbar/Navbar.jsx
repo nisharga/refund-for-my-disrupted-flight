@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import logo from '../../Assets/logo.png';
-// import "./Navbar.css";
+import "./Navbar.css";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);

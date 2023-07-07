@@ -7,9 +7,10 @@ import LetterHistoryPopupSection from "./LetterHistoryParts/LetterHistoryPopupSe
 import { AuthContext } from "../../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import airLoading from "../../Assets/loader.gif";
 
 const LetterHistory = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
   const [data, setData] = useState();
@@ -23,8 +24,8 @@ const LetterHistory = () => {
   const handleCloseModal = () => {
     setIsOpen(false);
   };
-
   useEffect(() => {
+
     const handleOutsideClick = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -91,6 +92,12 @@ const LetterHistory = () => {
 
   return (
     <div className="block mx-auto">
+      {
+        loading === true &&
+        <div className="h-full flex justify-center items-center">
+          <img className="rounded-full" src={airLoading} alt="" />
+        </div>
+      }
       <h2 className="text-center mt-8 text-xl text-bold">
         {data && (
           <p>
