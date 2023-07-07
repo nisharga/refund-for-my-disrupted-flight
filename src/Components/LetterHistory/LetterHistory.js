@@ -5,7 +5,6 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { FiTrash2 } from "react-icons/fi";
 import LetterHistoryPopupSection from "./LetterHistoryParts/LetterHistoryPopupSection";
 import { AuthContext } from "../../Context/AuthProvider";
-import CloseIconSVG from "./LetterHistoryParts/CloseIconSVG";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -15,7 +14,6 @@ const LetterHistory = () => {
   const modalRef = useRef(null);
   const [data, setData] = useState();
   const [selectedVal, setSelectedVal] = useState(null);
-  const [deleted, setDeleted] = useState(false);
   const navigate = useNavigate();
   const handleOpenModal = (val) => {
     setSelectedVal(val);
@@ -73,7 +71,6 @@ const LetterHistory = () => {
               .then((response) => {
                 if (response.ok) {
                   toast.success("Delete Successfully!!");
-                  setDeleted(true);
                   navigate("/");
                 } else {
                   throw new Error("Error deleting user");
