@@ -4,8 +4,6 @@ import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
 import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import MyProfile from "../Components/MyProfile/MyProfile";
-import AccountSetting from "../Components/AccountSetting/AccountSetting";
 import Contact from "../Components/Contact/Contact";
 import Policies from "../Components/Policies/Policies";
 import LetterHistory from "../Components/LetterHistory/LetterHistory";
@@ -54,17 +52,6 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <SignUp />,
       },
-
-      // other
-      {
-        path: "/profile",
-        element: <MyProfile />,
-      },
-      {
-        path: "/settings",
-        element: <AccountSetting />,
-      },
-      // other
     ],
   },
 ]);

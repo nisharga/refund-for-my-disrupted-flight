@@ -5,7 +5,7 @@ import { FaFilePdf } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineReload, AiOutlineRollback } from "react-icons/ai";
-import letterLoading from "../../Assets/letterLoading.gif";
+import airLoading from "../../Assets/loader.gif";
 
 const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataForClaim, resultLoading, setResultLoading }) => {
   const pdfRef = useRef(null);
@@ -97,7 +97,7 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
                 >
                   <p>
                     <FaFilePdf></FaFilePdf>
-                  </p> 
+                  </p>
                   <p>Save</p>
                 </button>
               </div>
@@ -106,11 +106,11 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
 
         </div>
         <div className="py-7" >
-          <div>
+        <div>
             {
               resultLoading === true &&
               <div className="h-full flex justify-center items-center">
-                <img className="rounded-full" src={letterLoading} alt="" />
+                <img className="rounded-full" src={airLoading} alt="" />
               </div>
             }
           </div>

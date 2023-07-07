@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FaExternalLinkAlt, FaHistory } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { FiLogOut, FiHome, FiLogIn } from "react-icons/fi";
 import { MdPolicy } from "react-icons/md";
 import { SlEnvolopeLetter } from "react-icons/sl"; 
