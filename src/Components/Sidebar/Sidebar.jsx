@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaExternalLinkAlt, FaHistory } from "react-icons/fa";
-import { FiLogOut, FiHome } from "react-icons/fi";
-import { MdSubscriptions, MdPolicy } from "react-icons/md";
+import { FiLogOut, FiHome, FiLogIn } from "react-icons/fi";
+import { MdPolicy } from "react-icons/md";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -33,21 +33,19 @@ const Sidebar = () => {
               <CustomLinks to="/letter_history" className="flex items-center gap-6 hover:text-sky-500">
                 <p><SlEnvolopeLetter></SlEnvolopeLetter></p><p>Claim Letter History</p>
               </CustomLinks>
-              <CustomLinks to="/subscription" className="flex items-center gap-6 hover:text-sky-500">
-                <p><MdSubscriptions></MdSubscriptions></p><p>Subscriptions</p>
-              </CustomLinks>
+              <CustomLinks to="/feedback_contact" className="flex items-center gap-6 hover:text-sky-500">
+              <p><FaExternalLinkAlt></FaExternalLinkAlt></p><p>Feedback & Contact</p>
+            </CustomLinks>
               <CustomLinks className="flex items-center gap-6 hover:text-sky-500" onClick={logout}>
                 <p><FiLogOut></FiLogOut></p><p>Log Out</p>
               </CustomLinks>
             </>
             :
             <CustomLinks to="/login" className="flex items-center gap-6 hover:text-sky-500">
-              <p><FiLogOut></FiLogOut></p><p>Log in</p>
+              <p><FiLogIn></FiLogIn></p><p>Log in</p>
             </CustomLinks>
-        }
-        <CustomLinks to="/feedback_contact" className="flex items-center gap-6 hover:text-sky-500">
-          <p><FaExternalLinkAlt></FaExternalLinkAlt></p><p>Feedback & Contact</p>
-        </CustomLinks>
+             }
+         
       </div>
     </>
 
