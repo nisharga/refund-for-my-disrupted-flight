@@ -19,27 +19,23 @@ const SignIn = () => {
 
   const handleLogin = (data) => {
     setSignInError("");
-    console.log(data);
     const email = data.email;
     const password = data.password;
 
     signIn(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
         reset();
         navigate('/');
       })
       .catch((err) => setSignInError(err.message));
   };
 
-  console.log(signInError.slice(22, 36));
 
   const handleGoogleSignIn = () => {
     googlesignIn()
       .then((res) => {
         // const user = res.user;
-        // console.log(user);
         navigate('/');
 
         
@@ -56,8 +52,7 @@ const SignIn = () => {
           body: JSON.stringify({ name: displayName, email, photoUrl: photoURL }),
         })
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data); // Handle the response from the backend if needed
+          .then((data) => {// Handle the response from the backend if needed
             navigate('/');
           })
           .catch((error) => {

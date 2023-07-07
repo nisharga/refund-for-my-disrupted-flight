@@ -23,7 +23,6 @@ const Step1 = ({ setFormData, formData }) => {
 
   const handleSearch = (e) => {
     const value = e.target.value;
-    console.log(value);
     setFormData({ ...formData, airLineName: value });
     if (value === "") {
       setFilteredOptions([]);

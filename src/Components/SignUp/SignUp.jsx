@@ -26,7 +26,6 @@ const SignUp = () => {
     createUser(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
         reset();
         navigate('/');
       })
@@ -37,7 +36,6 @@ const SignUp = () => {
     googlesignIn()
       .then((res) => {
         const user = res.user;
-        console.log(user);
       })
       .catch((err) => console.log(err));
   };

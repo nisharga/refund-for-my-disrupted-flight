@@ -71,7 +71,6 @@ const MultiStepForm = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("eligibility: ", data);
         setEligibility(data);
       })
       .catch(error => console.log(error))
@@ -100,12 +99,10 @@ const MultiStepForm = () => {
     newData = {
       ...newData, fullName: user?.displayName, meal: mealAmount, accommodation: accommodationAmount, transportation: transportationAmount, others: othersAmount
     }
-    console.log(newData);
 
     setDataForClaim(newData);
     setResultLoading(false);
   };
-  console.log(formData);
 
   return (
     <div className={`block mx-auto ${resultLoading && "lg:h-[90%]"}`}>

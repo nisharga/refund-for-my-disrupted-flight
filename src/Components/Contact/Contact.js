@@ -23,7 +23,6 @@ const Contact = () => {
       feedback,
       suggestions,
     };
-    console.log(formData);
     fetch("https://defiant-toad-gear.cyclic.app/api/v1/query", {
       method: "POST",
       headers: {
@@ -33,7 +32,6 @@ const Contact = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Feedback data: ", data);
         toast.success("Thanks for Your Feedback");
       })
       .catch((error) => console.log("error: ", error));
