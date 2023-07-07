@@ -29,7 +29,7 @@ const LetterHistoryPopupSection = ({modalRef, handleCloseModal, selectedVal}) =>
       };
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
-    <div className="bg-white w-1/2 rounded-lg" ref={modalRef}>
+    <div className="bg-white w-3/4 rounded-lg" ref={modalRef}>
       <div className="flex justify-end">
         <button className="p-2" onClick={handleCloseModal}>
           <CloseIconSVG />
