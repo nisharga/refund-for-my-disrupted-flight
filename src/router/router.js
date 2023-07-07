@@ -8,8 +8,6 @@ import MyProfile from "../Components/MyProfile/MyProfile";
 import AccountSetting from "../Components/AccountSetting/AccountSetting";
 import Contact from "../Components/Contact/Contact";
 import Policies from "../Components/Policies/Policies";
-import Eligible_History from "../Components/EligibleHistory/EligibleHistory";
-import EligibleHistory from "../Components/EligibleHistory/EligibleHistory";
 import LetterHistory from "../Components/LetterHistory/LetterHistory";
 
 export const router = createBrowserRouter([
@@ -47,10 +45,6 @@ export const router = createBrowserRouter([
         element: <SignIn />,
       },
 
-      {
-        path: "/eligible_history",
-        element: <EligibleHistory />,
-      },
       {
         path: "/letter_history",
         element: <LetterHistory />,
