@@ -2,7 +2,7 @@
 Live Site : https://refund-disrupted-flight.netlify.app/
 ## Installation
 
-Clone The Development Branch by this code
+Clone The Development Branch follow this code 
 
 ```bash
   git clone -b development https://github.com/nisharga/refund-for-my-disrupted-flight.git
