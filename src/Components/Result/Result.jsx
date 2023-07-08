@@ -5,7 +5,7 @@ import { AiOutlineReload, AiOutlineRollback } from "react-icons/ai";
 import { FaFilePdf } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { TiTick } from "react-icons/ti";
-import letterLoading from "../../Assets/letterLoading.gif";
+import airLoading from "../../Assets/loader.gif";
 
 const Result = ({
   eligibleResult,
@@ -17,6 +17,7 @@ const Result = ({
   setResultLoading,
 }) => {
   const pdfRef = useRef(null);
+
   const [size, setSize] = useState(0);
   const { eligibility, answer } = eligibleResult?.data;
   const splitAnswer = answer.split("\n");
@@ -44,7 +45,7 @@ const Result = ({
   };
   const handleClaimLetter = async () => {
     setResultLoading(true);
-    await fetch("http://localhost:5000/api/v1/letter", {
+    await fetch("https://defiant-toad-gear.cyclic.app/api/v1/letter", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,7 +55,6 @@ const Result = ({
       .then((res) => res.json())
       .then((data) => {
         setSize(1);
-        console.log("letter: ", data);
         setLetter(data);
       })
       .catch((error) => console.log("error: ", error));
@@ -112,7 +112,7 @@ const Result = ({
                 >
                   <p>
                     <FaFilePdf></FaFilePdf>
-                  </p>{" "}
+                  </p>
                   <p>Save</p>
                 </button>
               </div>
@@ -123,7 +123,7 @@ const Result = ({
           <div>
             {resultLoading === true && (
               <div className="h-full flex justify-center items-center">
-                <img className="rounded-full" src={letterLoading} alt="" />
+                <img className="rounded-full" src={airLoading} alt="" />
               </div>
             )}
           </div>

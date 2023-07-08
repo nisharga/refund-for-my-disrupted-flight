@@ -56,7 +56,7 @@ const Step1 = ({ setFormData, formData }) => {
       {/* airline details */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
-          Airline and Flight Details
+          Flight Details
         </h4>
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
           <div>
@@ -64,7 +64,7 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Airline Name
+              Airline Name <span className="text-red-500">*</span>
             </label>
             <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
               <MdFlight className="text-gray-400 text-lg" />
@@ -98,7 +98,7 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Flight Number
+              Flight Number <span className="text-red-500">*</span>
             </label>
             <div
               className={`border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
@@ -135,7 +135,7 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Date of Disruption
+              Date of Disruption <span className="text-red-500">*</span>
             </label>
             <div className="bg-white  flex items-center p-2 border border-gray-400 rounded">
               <MdOutlineDateRange className="text-gray-400 text-lg " />
@@ -156,7 +156,7 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Reason for Disruption
+              Reason for Disruption <span className="text-red-500">*</span>
             </label>
             <div className="w-full bg-white mx-auto border border-gray-400 rounded flex justify-end items-center h-10">
               <select
@@ -190,7 +190,7 @@ const Step1 = ({ setFormData, formData }) => {
       {/* boarding pass details field */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
         <h4 className="font-medium mb-2 text-lg text-gray-700">
-          Disruption Reason and Boarding Pass Details
+          Boarding Pass Details
         </h4>
         {/* reason for disruption  */}
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
@@ -199,7 +199,7 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Boarding pass number
+              Boarding pass number <span className="text-red-500">*</span>
             </label>
             <div className="border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
               <span
@@ -228,7 +228,7 @@ const Step1 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Boarding pass date
+              Boarding pass date <span className="text-red-500">*</span>
             </label>
             <div className="bg-white flex items-center p-2 border border-gray-400 rounded">
               <MdOutlineDateRange className="text-gray-400 text-lg" />
