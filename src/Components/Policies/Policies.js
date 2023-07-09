@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MdFlight } from "react-icons/md";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { AiOutlineFileSearch } from "react-icons/ai";
 import { useLoaderData } from 'react-router-dom';
 import airLoading from "../../Assets/loader.gif";
 
@@ -9,6 +9,7 @@ const Policies = () => {
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [searchItem, setSearchItem] = useState("");
   const [policies, setPolicies] = useState();
+  const [name, setName] = useState();
   const [resultLoading, setResultLoading] = useState(false);
   const splitPolicies = policies?.split("\n").map((paragraph, index) => (
     <p key={index} className="pb-1.5">
@@ -41,6 +42,7 @@ const Policies = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setName(data.name);
         setPolicies(data.data.AirlinesPolicies);
       })
       .catch((error) => console.log("error: ", error));
@@ -49,10 +51,10 @@ const Policies = () => {
   return (
     <>
       <div className="w-[90%] mx-auto">
-        <div className="flex justify-center md:justify-end pt-12">
-          <div className="w-[90%] lg:w-[40%]">
+        <div className="flex justify-center pt-12">
+          <div className="w-[90%] lg:w-[50%]">
             <label
-              className="block font-medium mb-2 text-gray-700 text-right"
+              className="block font-medium mb-4 text-lg text-gray-700 text-center"
               htmlFor="name"
             >
               Airline Name
@@ -67,10 +69,10 @@ const Policies = () => {
                 onChange={handleSearch}
                 required
               />
-              <RiArrowDropDownLine />
+              <AiOutlineFileSearch className="w-6 h-6" />
             </div>
             {filteredOptions.length > 0 && (
-              <div className="absolute w-[81%] lg:w-[27%] rounded-sm z-10 bg-gray-700 border-none outline-none text-white">
+              <div className="absolute w-[81%] lg:w-[28%] max-h-[90%] lg:max-h-[45%] overflow-y-scroll rounded-sm z-10 bg-gray-700 border-none outline-none text-white">
                 {filteredOptions.map((data, index) => (
                   <div
                     key={index}
@@ -94,15 +96,14 @@ const Policies = () => {
           ) : (
             <>
               <div className="py-7">
-                {searchItem === "" ? (
-                  <h2 className="text-center font-bold text-xl">
-                    Airline Policies
+                {
+                  name &&
+                  <h2 className="text-center font-medium text-xl">
+                    {
+                      name
+                    }'s Policies
                   </h2>
-                ) : (
-                  <h2 className="text-center font-bold text-xl">
-                    {searchItem}'s Policies
-                  </h2>
-                )}
+                }
                 <div style={{ whiteSpace: "pre-line" }}>{splitPolicies}</div>
               </div>
             </>

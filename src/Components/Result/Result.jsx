@@ -43,6 +43,8 @@ const Result = ({
     }
   };
   const handleClaimLetter = async () => {
+    setSize(1);
+    setLetter();
     setResultLoading(true);
     await fetch("https://defiant-toad-gear.cyclic.app/api/v1/letter", {
       method: "POST",
@@ -51,9 +53,8 @@ const Result = ({
       },
       body: JSON.stringify(dataForClaim),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setSize(1);
+      .then(res => res.json())
+      .then(data => {
         setLetter(data);
       })
       .catch((error) => console.log("error: ", error));
