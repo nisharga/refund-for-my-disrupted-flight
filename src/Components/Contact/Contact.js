@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { AiOutlineStar } from "react-icons/ai";
 import { toast } from "react-hot-toast";
+import { AiOutlineStar } from "react-icons/ai";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Contact = () => {
