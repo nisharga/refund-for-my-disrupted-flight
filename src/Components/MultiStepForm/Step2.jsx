@@ -13,12 +13,9 @@ const Step2 = ({ setFormData, formData }) => {
 
   const handleRemoveRecipt = (i) => {
     const list = [...formData.receiptDetails];
-    console.log(i);
     list.splice(i, 1);
-    console.log(list);
     setFormData({ ...formData, receiptDetails: list });
   };
-  console.log("remove: ", formData?.receiptDetails);
 
   const handleReciptInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -173,7 +170,8 @@ const Step2 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Email Communication Summary
+              Email Communication Summary{" "}
+              <span className="text-red-500">*</span>
             </label>
             <textarea
               defaultValue={formData?.emailSummary}
@@ -199,7 +197,7 @@ const Step2 = ({ setFormData, formData }) => {
               className="block font-medium mb-2 text-gray-700"
               htmlFor="name"
             >
-              Message Exchange Summary
+              Message Exchange Summary <span className="text-red-500">*</span>
             </label>
             <textarea
               defaultValue={formData?.messageSummary}

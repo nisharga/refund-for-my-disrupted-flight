@@ -21,7 +21,6 @@ const Result = ({
   const [size, setSize] = useState(0);
   const { eligibility, answer } = eligibleResult?.data;
   const splitAnswer = answer.split("\n");
-  console.log("data for claim: ", dataForClaim);
 
   const generatePDF = async () => {
     if (eligibility) {

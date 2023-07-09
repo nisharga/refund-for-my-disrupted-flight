@@ -111,7 +111,6 @@ const MultiStepForm = () => {
       transportation: transportationAmount,
       others: othersAmount,
     };
-    console.log(newData);
 
     setDataForClaim(newData);
     setResultLoading(false);

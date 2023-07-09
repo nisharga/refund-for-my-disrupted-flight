@@ -8,6 +8,7 @@ const Step1 = ({ setFormData, formData }) => {
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
+  const [isInputFocused, setInputFocused] = useState(0);
 
   useEffect(() => {
     fetch("airlines.json")
@@ -19,7 +20,6 @@ const Step1 = ({ setFormData, formData }) => {
 
   const handleSearch = (e) => {
     const value = e.target.value;
-    console.log(value);
     setFormData({ ...formData, airLineName: value });
     if (value === "") {
       setFilteredOptions([]);
@@ -50,30 +50,57 @@ const Step1 = ({ setFormData, formData }) => {
       boardingPassDate: format(date, "PP"),
     });
   };
+  const handleInputFocus = (num) => {
+    setInputFocused(num);
+  };
+
+  const handleInputBlur = () => {
+    setInputFocused(0);
+  };
 
   return (
     <div className="transition-opacity transform duration-500">
       {/* airline details */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
-        <h4 className="font-medium mb-2 text-lg text-gray-700">
+        <h4 className="font-medium mb-2 text-lg text-blue-950">
           Flight Details
         </h4>
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Airline Name <span className="text-red-500">*</span>
             </label>
-            <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
-              <MdFlight className="text-gray-400 text-lg" />
+            <div
+              className={`p-2 border w-full bg-white mx-auto ${
+                formData?.airLineName && !isInputFocused
+                  ? "border-blue-900 "
+                  : !formData?.airLineName && !isInputFocused
+                  ? "border-gray-400"
+                  : isInputFocused && "border-blue-500"
+              } rounded flex justify-end items-center h-10 `}
+            >
+              <MdFlight
+                className={`text-gray-400 text-xl ${
+                  isInputFocused
+                    ? "text-blue-500"
+                    : formData?.airLineName && "text-blue-900"
+                }`}
+              />
               <input
                 type="text"
-                className="ml-1 w-full border-none outline-none"
+                className={`ml-1 w-full border-none outline-none ${
+                  isInputFocused === 1
+                    ? "text-blue-500"
+                    : formData?.airLineName && "text-blue-900"
+                }`}
                 placeholder="e.g Delta Airlines"
                 value={formData.airLineName}
                 onChange={handleSearch}
+                onFocus={handleInputFocus}
+                onBlur={() => handleInputBlur(1)}
                 required
               />
             </div>
@@ -95,7 +122,7 @@ const Step1 = ({ setFormData, formData }) => {
 
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Flight Number <span className="text-red-500">*</span>
@@ -106,17 +133,22 @@ const Step1 = ({ setFormData, formData }) => {
               {/* selected airline's code */}
               <span
                 name="airLineId"
-                className="inline-block h-full  px-2 text-gray-400 border-r p-2 min-w-min"
+                className={`inline-block h-full  px-2 ${
+                  formData?.airLineId
+                    ? "text-blue-950 font-normal"
+                    : "text-gray-400"
+                } border-r p-2 min-w-min`}
               >
                 {formData.airLineId ? formData.airLineId : "DL"}
               </span>
 
               <input
                 type="number"
-                // className={`ml-1 w-full border-none outline-none ${
-                //   !formData?.airLineName && "cursor-not-allowed"
-                // }`}
-                className={`ml-1 w-full border-none outline-none px-2`}
+                readOnly={!formData?.airLineName}
+                className={`ml-1 w-full border-none outline-none ${
+                  !formData?.airLineName && "cursor-not-allowed"
+                }`}
+                // className={`ml-1 w-full border-none outline-none px-2`}
                 placeholder="1234"
                 // value={formData?.flightNumber}
                 value={formData?.flightNumber}
@@ -132,7 +164,7 @@ const Step1 = ({ setFormData, formData }) => {
           </div>
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Date of Disruption <span className="text-red-500">*</span>
@@ -140,6 +172,7 @@ const Step1 = ({ setFormData, formData }) => {
             <div className="bg-white  flex items-center p-2 border border-gray-400 rounded">
               <MdOutlineDateRange className="text-gray-400 text-lg " />
               <DatePicker
+                readOnly={!formData?.flightNumber}
                 className={`ml-1 w-60 lg:w-80 border-none outline-none ${
                   !formData?.flightNumber && "cursor-not-allowed"
                 }`}
@@ -153,7 +186,7 @@ const Step1 = ({ setFormData, formData }) => {
 
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Reason for Disruption <span className="text-red-500">*</span>
@@ -166,6 +199,7 @@ const Step1 = ({ setFormData, formData }) => {
                     reasonForDisruption: e.target.value,
                   })
                 }
+                disabled={!formData?.dateOfDisruption}
                 defaultValue={
                   formData?.reasonForDisruption === ""
                     ? ""
@@ -189,14 +223,14 @@ const Step1 = ({ setFormData, formData }) => {
 
       {/* boarding pass details field */}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
-        <h4 className="font-medium mb-2 text-lg text-gray-700">
+        <h4 className="font-medium mb-2 text-lg text-blue-950">
           Boarding Pass Details
         </h4>
         {/* reason for disruption  */}
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Boarding pass number <span className="text-red-500">*</span>
@@ -225,7 +259,7 @@ const Step1 = ({ setFormData, formData }) => {
           </div>
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Boarding pass date <span className="text-red-500">*</span>
