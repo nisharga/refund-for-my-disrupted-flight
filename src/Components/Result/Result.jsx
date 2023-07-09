@@ -35,6 +35,8 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
     }
   };
   const handleClaimLetter = async () => {
+    setSize(1);
+    setLetter();
     setResultLoading(true);
     await fetch('https://defiant-toad-gear.cyclic.app/api/v1/letter', {
       method: "POST",
@@ -45,7 +47,6 @@ const Result = ({ eligibleResult, letterResult, setEligibility, setLetter, dataF
     })
       .then(res => res.json())
       .then(data => {
-        setSize(1)
         setLetter(data);
       })
       .catch(error => console.log("error: ", error))

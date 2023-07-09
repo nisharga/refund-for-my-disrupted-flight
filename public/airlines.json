@@ -1,5 +1,17 @@
 [
   {
+    "id": "VQ",
+    "lcc": "None",
+    "name": "Novoair",
+    "logo": "https://media.licdn.com/dms/image/C560BAQHz1tw0c3IEaA/company-logo_200_200/0/1644130612471?e=2147483647&v=beta&t=GPr0fZxwjLFuEe1aHh4PucWCW_sXRbxZnz950eWKXa8"
+  },
+  {
+    "id": "BS",
+    "lcc": "None",
+    "name": "US-Bangla Airlines",
+    "logo": "https://www.aviatorcapital.com/wp-content/uploads/2019/09/US-BanglaAirlines.png"
+  },
+  {
     "id": "AUTOSTRAD",
     "lcc": "None",
     "name": "Autostradale",
