@@ -1,11 +1,14 @@
-import React, { useRef } from 'react'
-import CloseIconSVG from './CloseIconSVG'
-import { FaFilePdf } from "react-icons/fa";
-import { toast } from "react-hot-toast";
 import { jsPDF } from "jspdf";
+import React, { useRef } from "react";
+import { toast } from "react-hot-toast";
+import { FaFilePdf } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 
-
-const LetterHistoryPopupSection = ({ modalRef, handleCloseModal, selectedVal }) => {
+const LetterHistoryPopupSection = ({
+  modalRef,
+  handleCloseModal,
+  selectedVal,
+}) => {
   const pdfRef = useRef(null);
   const generatePDF = async () => {
     const content = pdfRef.current;
@@ -23,17 +26,23 @@ const LetterHistoryPopupSection = ({ modalRef, handleCloseModal, selectedVal }) 
         doc.save("letter.pdf");
       },
     });
-    toast.success("PDF Downloaded Successfully!!")
+    toast.success("PDF Downloaded Successfully!!");
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-[0.01] transition-opacity">
-      <div className="bg-slate-200 w-3/4 rounded-lg shadow-slate-200 shadow border-none" ref={modalRef}>
+    <div className="fixed inset-0 overflow-hidden scroll-container  flex items-center justify-center p-10 lg:pt-5 lg:-mr-56 bg-black bg-opacity-[0.07] transition-opacity">
+      <div
+        className="bg-slate-200 w-full h-full lg:w-7/12 lg:h-[500px]  overflow-y-scroll  rounded-lg "
+        ref={modalRef}
+      >
         <div className="flex justify-end">
-          <button className="p-2" onClick={handleCloseModal}>
-            <CloseIconSVG />
+          <button
+            className="p-2 fixed font-bold text-3xl "
+            onClick={handleCloseModal}
+          >
+            <IoMdClose />
           </button>
         </div>
-        <div className="p-4">
+        <div className="w-10/12 mx-auto mt-10">
           <button
             onClick={generatePDF}
             className="rounded-full flex justify-center items-center gap-1 bg-rose-700 text-white px-3 py-1"
@@ -44,15 +53,22 @@ const LetterHistoryPopupSection = ({ modalRef, handleCloseModal, selectedVal }) 
             <p>Save</p>
           </button>
           {
-            <div ref={pdfRef} className=''>
-              {selectedVal?.claimLetter.split('\n')
-                .map((paragraph, index) => <span key={index}>{paragraph}<br /></span>)}
+            <div ref={pdfRef} className="mb-10">
+              {selectedVal?.claimLetter.split("\n").map(
+                (paragraph, index) => (
+                  <span key={index}>
+                    {paragraph}
+                    <br />
+                  </span>
+                )
+                // ({ paragraph })
+              )}
             </div>
           }
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LetterHistoryPopupSection
+export default LetterHistoryPopupSection;

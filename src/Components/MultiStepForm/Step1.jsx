@@ -8,7 +8,7 @@ const Step1 = ({ setFormData, formData }) => {
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
-  const [isInputFocused, setInputFocused] = useState(0);
+  const [isInputFocused, setIsInputFocused] = useState(0);
 
   useEffect(() => {
     fetch("airlines.json")
@@ -51,12 +51,13 @@ const Step1 = ({ setFormData, formData }) => {
     });
   };
   const handleInputFocus = (num) => {
-    setInputFocused(num);
+    setIsInputFocused(num);
   };
 
   const handleInputBlur = () => {
-    setInputFocused(0);
+    setIsInputFocused(0);
   };
+  console.log(isInputFocused);
 
   return (
     <div className="transition-opacity transform duration-500">
@@ -75,18 +76,20 @@ const Step1 = ({ setFormData, formData }) => {
             </label>
             <div
               className={`p-2 border w-full bg-white mx-auto ${
-                formData?.airLineName && !isInputFocused
+                isInputFocused === 1
+                  ? "border-blue-500"
+                  : formData?.airLineName
                   ? "border-blue-900 "
-                  : !formData?.airLineName && !isInputFocused
-                  ? "border-gray-400"
-                  : isInputFocused && "border-blue-500"
+                  : "border-gray-400"
               } rounded flex justify-end items-center h-10 `}
             >
               <MdFlight
-                className={`text-gray-400 text-xl ${
-                  isInputFocused
+                className={`text-xl ${
+                  isInputFocused === 1
                     ? "text-blue-500"
-                    : formData?.airLineName && "text-blue-900"
+                    : formData?.airLineName
+                    ? "text-blue-900"
+                    : "text-gray-400"
                 }`}
               />
               <input
@@ -99,8 +102,8 @@ const Step1 = ({ setFormData, formData }) => {
                 placeholder="e.g Delta Airlines"
                 value={formData.airLineName}
                 onChange={handleSearch}
-                onFocus={handleInputFocus}
-                onBlur={() => handleInputBlur(1)}
+                onFocus={() => handleInputFocus(1)}
+                onBlur={() => handleInputBlur(0)}
                 required
               />
             </div>
@@ -128,7 +131,13 @@ const Step1 = ({ setFormData, formData }) => {
               Flight Number <span className="text-red-500">*</span>
             </label>
             <div
-              className={`border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10`}
+              className={` border w-full bg-white mx-auto ${
+                isInputFocused === 2
+                  ? "border-blue-500"
+                  : formData?.flightNumber
+                  ? "border-blue-900 "
+                  : "border-gray-400"
+              }  rounded flex justify-end items-center h-10 `}
             >
               {/* selected airline's code */}
               <span
@@ -145,12 +154,13 @@ const Step1 = ({ setFormData, formData }) => {
               <input
                 type="number"
                 readOnly={!formData?.airLineName}
+                disabled={!formData?.airLineName}
                 className={`ml-1 w-full border-none outline-none ${
-                  !formData?.airLineName && "cursor-not-allowed"
-                }`}
-                // className={`ml-1 w-full border-none outline-none px-2`}
+                  isInputFocused === 2
+                    ? "text-blue-500"
+                    : formData?.flightNumber && "text-blue-900"
+                } ${!formData?.airLineName && "cursor-not-allowed"}`}
                 placeholder="1234"
-                // value={formData?.flightNumber}
                 value={formData?.flightNumber}
                 onChange={(e) =>
                   setFormData({
@@ -158,6 +168,8 @@ const Step1 = ({ setFormData, formData }) => {
                     flightNumber: Number(e.target.value),
                   })
                 }
+                onFocus={() => handleInputFocus(2)}
+                onBlur={() => handleInputBlur(0)}
                 required
               />
             </div>
@@ -169,15 +181,36 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Date of Disruption <span className="text-red-500">*</span>
             </label>
-            <div className="bg-white  flex items-center p-2 border border-gray-400 rounded">
-              <MdOutlineDateRange className="text-gray-400 text-lg " />
+            <div
+              className={`bg-white  flex items-center p-2 border ${
+                isInputFocused === 3
+                  ? "border-blue-500"
+                  : formData?.dateOfDisruption
+                  ? "border-blue-900 "
+                  : "border-gray-400"
+              }  rounded`}
+            >
+              <MdOutlineDateRange
+                className={`text-xl ${
+                  isInputFocused === 3
+                    ? "text-blue-500"
+                    : formData?.dateOfDisruption
+                    ? "text-blue-900"
+                    : "text-gray-400"
+                }`}
+              />
               <DatePicker
                 readOnly={!formData?.flightNumber}
+                disabled={!formData?.flightNumber}
                 className={`ml-1 w-60 lg:w-80 border-none outline-none ${
-                  !formData?.flightNumber && "cursor-not-allowed"
-                }`}
+                  isInputFocused === 3
+                    ? "text-blue-500"
+                    : formData?.flightNumber && "text-blue-900"
+                }  ${!formData?.flightNumber && "cursor-not-allowed"} `}
                 value={formData?.dateOfDisruption}
                 onChange={handleDisruptionDate}
+                onFocus={() => handleInputFocus(3)}
+                onBlur={() => handleInputBlur(0)}
                 placeholderText="MM/DD/YYYY"
                 required
               />
@@ -191,7 +224,17 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Reason for Disruption <span className="text-red-500">*</span>
             </label>
-            <div className="w-full bg-white mx-auto border border-gray-400 rounded flex justify-end items-center h-10">
+            <div
+              className={`w-full bg-white mx-auto border  rounded flex justify-end items-center h-10
+            ${
+              isInputFocused === 4
+                ? "border-blue-500"
+                : formData?.reasonForDisruption
+                ? "border-blue-900 "
+                : "border-gray-400"
+            }
+            `}
+            >
               <select
                 onChange={(e) =>
                   setFormData({
@@ -199,13 +242,22 @@ const Step1 = ({ setFormData, formData }) => {
                     reasonForDisruption: e.target.value,
                   })
                 }
+                onFocus={() => handleInputFocus(4)}
+                onBlur={() => handleInputBlur(0)}
                 disabled={!formData?.dateOfDisruption}
                 defaultValue={
                   formData?.reasonForDisruption === ""
                     ? ""
                     : formData?.reasonForDisruption
                 }
-                className="w-full px-3 outline-none border-gray-400"
+                className={`w-full px-3 outline-none border-gray-400 ${
+                  !formData?.dateOfDisruption && "cursor-not-allowed"
+                } ${
+                  isInputFocused === 4
+                    ? "text-blue-500"
+                    : formData?.flightNumber && "text-blue-900"
+                } 
+`}
                 required
               >
                 <option defaultChecked>Select a Disruption Reason</option>
@@ -235,16 +287,36 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Boarding pass number <span className="text-red-500">*</span>
             </label>
-            <div className="border w-full bg-white mx-auto border-gray-400 rounded flex justify-end items-center h-10">
+            <div
+              className={` border w-full bg-white mx-auto ${
+                isInputFocused === 5
+                  ? "border-blue-500"
+                  : formData?.boardingPassNumber
+                  ? "border-blue-900 "
+                  : "border-gray-400"
+              }  rounded flex justify-end items-center h-10 `}
+            >
               <span
                 name="airLineId"
-                className="inline-block h-full  px-2 text-gray-400 border-r p-2 min-w-10"
+                className={`inline-block h-full  px-2 ${
+                  formData?.airLineId
+                    ? "text-blue-950 font-normal"
+                    : "text-gray-400"
+                } border-r p-2 min-w-min`}
               >
                 {formData.airLineId ? formData.airLineId : "DL"}
               </span>
               <input
                 type="number"
-                className="ml-1 w-full border-none outline-none px-2"
+                readOnly={!formData?.reasonForDisruption}
+                disabled={!formData?.reasonForDisruption}
+                className={`ml-1 w-full border-none outline-none px-2 ${
+                  !formData?.reasonForDisruption && "cursor-not-allowed"
+                } ${
+                  isInputFocused === 5
+                    ? "text-blue-500"
+                    : formData?.boardingPassNumber && "text-blue-900"
+                }`}
                 placeholder="1234"
                 value={formData?.boardingPassNumber}
                 onChange={(e) =>
@@ -253,6 +325,8 @@ const Step1 = ({ setFormData, formData }) => {
                     boardingPassNumber: e.target.value,
                   })
                 }
+                onFocus={() => handleInputFocus(5)}
+                onBlur={() => handleInputBlur(0)}
                 required
               />
             </div>
@@ -264,12 +338,40 @@ const Step1 = ({ setFormData, formData }) => {
             >
               Boarding pass date <span className="text-red-500">*</span>
             </label>
-            <div className="bg-white flex items-center p-2 border border-gray-400 rounded">
-              <MdOutlineDateRange className="text-gray-400 text-lg" />
+            <div
+              className={`bg-white  flex items-center p-2 border ${
+                isInputFocused === 6
+                  ? "border-blue-500"
+                  : formData?.boardingPassDate
+                  ? "border-blue-900 "
+                  : "border-gray-400"
+              }  rounded`}
+            >
+              <MdOutlineDateRange
+                className={`text-xl ${
+                  isInputFocused === 6
+                    ? "text-blue-500"
+                    : formData?.boardingPassDate
+                    ? "text-blue-900"
+                    : "text-gray-400"
+                }`}
+              />
               <DatePicker
-                className="ml-1 w-60 lg:w-80 border-none outline-none"
+                className={`ml-1 w-60 lg:w-80 border-none outline-none ${
+                  !formData?.boardingPassNumber && "cursor-not-allowed"
+                } ${
+                  isInputFocused === 6
+                    ? "text-blue-500"
+                    : formData?.boardingPassDate
+                    ? "text-blue-900"
+                    : "text-gray-400"
+                }`}
+                readOnly={!formData?.boardingPassNumber}
+                disabled={!formData?.boardingPassNumber}
                 value={formData?.boardingPassDate}
                 onChange={handleBoardingPassDate}
+                onFocus={() => handleInputFocus(6)}
+                onBlur={() => handleInputBlur(0)}
                 placeholderText="MM/DD/YYYY"
                 required
               />
