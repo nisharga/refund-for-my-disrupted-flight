@@ -33,6 +33,7 @@ const Contact = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("Thanks for Your Feedback");
+        form.reset();
       })
       .catch((error) => console.log("error: ", error));
   };
