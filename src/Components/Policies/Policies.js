@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import { MdFlight } from "react-icons/md";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { useLoaderData } from 'react-router-dom';
 import airLoading from "../../Assets/loader.gif";
 
 const Policies = () => {

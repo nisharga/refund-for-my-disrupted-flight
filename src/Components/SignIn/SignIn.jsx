@@ -5,7 +5,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 // import { GrFacebook } from "react-icons/gr";
 import { BsGoogle } from "react-icons/bs";
 
-// signIn, 
+// signIn,
 const SignIn = () => {
   // const {
   //   register,
@@ -28,34 +28,36 @@ const SignIn = () => {
   //     .catch((err) => console.log(err.message));
   // };
 
-
   const handleGoogleSignIn = () => {
     googlesignIn()
       .then((res) => {
         // const user = res.user;
-        navigate('/');
+        navigate("/");
 
-        
-  
         // Send user data to the backend
-        
+
         const user = res.user;
         const { displayName, email, photoURL } = user;
-        fetch('https://defiant-toad-gear.cyclic.app/api/v1/users', {
-          method: 'POST',
+        fetch("https://defiant-toad-gear.cyclic.app/api/v1/users", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name: displayName, email, photoUrl: photoURL }),
+          body: JSON.stringify({
+            name: displayName,
+            email,
+            photoUrl: photoURL,
+          }),
         })
           .then((response) => response.json())
-          .then((data) => {// Handle the response from the backend if needed
-            navigate('/');
+          .then((data) => {
+            // Handle the response from the backend if needed
+            navigate("/");
           })
           .catch((error) => {
             console.error(error);
           });
-          
+
         // backendsend code finished
       })
       .catch((err) => console.log(err));
@@ -110,13 +112,18 @@ const SignIn = () => {
             onClick={handleGoogleSignIn}
             className="bg-teal-500  hover:bg-teal-800 duration-300 flex justify-center items-center gap-2 py-2 w-1/2 md:w-2/5 rounded-md "
           >
-            <p><BsGoogle></BsGoogle></p> <p>Google{" "}</p>
+            <p>
+              <BsGoogle></BsGoogle>
+            </p>{" "}
+            <p>Google </p>
           </button>
         </div>
         <p className="mt-5 text-center">
           Don’t have an account?
           <Link onClick={handleGoogleSignIn}>
-            <span className="text-[#0d73ff] cursor-pointer ml-1">Sign in with Google</span>
+            <span className="text-[#0d73ff] cursor-pointer ml-1">
+              Sign in with Google
+            </span>
           </Link>
         </p>
       </div>
