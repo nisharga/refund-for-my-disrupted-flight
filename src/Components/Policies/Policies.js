@@ -72,7 +72,7 @@ const Policies = () => {
               <AiOutlineFileSearch className="w-6 h-6" />
             </div>
             {filteredOptions.length > 0 && (
-              <div className="absolute w-[81%] lg:w-[28%] max-h-[90%] lg:max-h-[45%] overflow-y-scroll rounded-sm z-10 bg-gray-700 border-none outline-none text-white">
+              <div className="absolute w-[81%] lg:w-[35%] max-h-[90%] lg:max-h-[45%] overflow-y-scroll rounded-sm z-10 bg-gray-700 border-none outline-none text-white">
                 {filteredOptions.map((data, index) => (
                   <div
                     key={index}
