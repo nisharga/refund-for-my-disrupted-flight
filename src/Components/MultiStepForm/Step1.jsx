@@ -7,7 +7,6 @@ import { MdFlight, MdOutlineDateRange } from "react-icons/md";
 const Step1 = ({ setFormData, formData }) => {
   const [airData, setAirData] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
-  const [seletedAirlineCode, setSeletedAirlineCode] = useState("");
   const [isInputFocused, setIsInputFocused] = useState(0);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const Step1 = ({ setFormData, formData }) => {
     setFormData({ ...formData, airLineName: value });
     if (value === "") {
       setFilteredOptions([]);
-      setSeletedAirlineCode("");
     } else {
       const filtered = airData.filter((option) =>
         option.name.toLowerCase().includes(value.toLowerCase())
@@ -34,7 +32,6 @@ const Step1 = ({ setFormData, formData }) => {
 
   const handleSelectOption = (data) => {
     setFormData({ ...formData, airLineName: data.name, airLineId: data.id });
-    setSeletedAirlineCode(data.id);
     setFilteredOptions([]);
   };
 
@@ -57,7 +54,6 @@ const Step1 = ({ setFormData, formData }) => {
   const handleInputBlur = () => {
     setIsInputFocused(0);
   };
-  console.log(isInputFocused);
 
   return (
     <div className="transition-opacity transform duration-500">
