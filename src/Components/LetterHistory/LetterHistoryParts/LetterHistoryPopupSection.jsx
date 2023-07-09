@@ -29,7 +29,7 @@ const LetterHistoryPopupSection = ({
     toast.success("PDF Downloaded Successfully!!");
   };
   return (
-    <div className="fixed inset-0 overflow-hidden scroll-container  flex items-center justify-center p-10 lg:pt-5 lg:-mr-56 bg-black bg-opacity-[0.07] transition-opacity">
+    <div className="fixed inset-0 overflow-hidden scroll-container  flex items-center justify-center p-10 lg:pt-5 lg:-mr-56 bg-black bg-opacity-[0.02] transition-opacity">
       <div
         className="bg-slate-200 w-full h-full lg:w-7/12 lg:h-[500px]  overflow-y-scroll  rounded-lg "
         ref={modalRef}

@@ -27,7 +27,7 @@ const Step2 = ({ setFormData, formData }) => {
   return (
     <div className="transition-opacity  transform duration-500">
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
-        <h4 className="font-medium mb-2 text-lg text-gray-700">
+        <h4 className="font-medium mb-2 text-lg text-blue-950">
           Do You Have any Recipt Details
         </h4>
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
@@ -46,7 +46,7 @@ const Step2 = ({ setFormData, formData }) => {
             />
             <label
               htmlFor="noReceipt"
-              className="ml-2 mr-4 text-gray-400"
+              className="pl-2 text-left text-gray-400 w-full"
               readOnly
             >
               No, I don't
@@ -65,7 +65,7 @@ const Step2 = ({ setFormData, formData }) => {
               defaultChecked={formData?.isRecipt === "yes"}
               required
             />
-            <label htmlFor="yesRecipt" className="ml-2 mr-4 text-gray-400">
+            <label htmlFor="yesRecipt" className="pl-2 text-left text-gray-400 w-full">
               Yes, I hade receipts
             </label>
           </button>
@@ -161,13 +161,13 @@ const Step2 = ({ setFormData, formData }) => {
         </div>
       )}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
-        <h4 className="font-medium mb-2 text-lg text-gray-700">
+        <h4 className="font-medium mb-2 text-lg text-blue-950">
           Communication With Airlines
         </h4>
         <div className="grid grid-cols-1 items-center gap-3 my-5 ">
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Email Communication Summary{" "}
@@ -194,7 +194,7 @@ const Step2 = ({ setFormData, formData }) => {
         <div className="grid grid-cols-1 items-center gap-3 my-5 ">
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
               Message Exchange Summary <span className="text-red-500">*</span>

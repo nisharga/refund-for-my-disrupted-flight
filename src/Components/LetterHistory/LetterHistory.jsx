@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-import { useNavigate } from "react-router-dom";
 import airLoading from "../../Assets/loader.gif";
 import { AuthContext } from "../../Context/AuthProvider";
 import LetterHistoryPopupSection from "./LetterHistoryParts/LetterHistoryPopupSection";
@@ -12,12 +11,8 @@ const LetterHistory = () => {
   const modalRef = useRef(null);
   const [data, setData] = useState();
   const [selectedVal, setSelectedVal] = useState(null);
-  const navigate = useNavigate();
+  const [dataLoading, setDataLoading] = useState(false);
 
-  const handleOpenModal = (val) => {
-    setSelectedVal(val);
-    setIsOpen(true);
-  };
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -38,6 +33,7 @@ const LetterHistory = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setDataLoading(true);
       try {
         const response = await fetch(
           `https://defiant-toad-gear.cyclic.app/api/v1/letter/${user?.email}`
@@ -47,17 +43,19 @@ const LetterHistory = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+      setDataLoading(false);
     };
 
     fetchData();
+
   }, [user?.email]);
 
-  if (loading && !data?.data) {
-    return (
-      <div className="h-full flex justify-center items-center">
-        <img className="rounded-full" src={airLoading} alt="" />
-      </div>
-    );
+  const loadingContent = <div className="h-full flex justify-center items-center">
+    <img className="rounded-full" src={airLoading} alt="" />
+  </div>
+
+  if ((loading || dataLoading) && !data?.data) {
+    return loadingContent;
   }
   return (
     <div className="block mx-auto">
