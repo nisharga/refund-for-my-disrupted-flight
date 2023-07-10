@@ -1,7 +1,6 @@
 import React from "react";
 
 const Step2 = ({ setFormData, formData }) => {
-
   const handleAddRecipt = () => {
     setFormData({
       ...formData,
@@ -28,13 +27,13 @@ const Step2 = ({ setFormData, formData }) => {
   return (
     <div className="transition-opacity  transform duration-500">
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
-        <h4 className="font-medium mb-2 text-lg text-gray-700">
+        <h4 className="font-medium mb-2 text-lg text-blue-950">
           Do You Have any Recipt Details
         </h4>
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-5">
           <button
             className="pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex items-center h-10 cursor-pointer"
-            onClick={() => setFormData({...formData,isRecipt:"no"})}
+            onClick={() => setFormData({ ...formData, isRecipt: "no" })}
           >
             <input
               type="radio"
@@ -47,7 +46,7 @@ const Step2 = ({ setFormData, formData }) => {
             />
             <label
               htmlFor="noReceipt"
-              className="ml-2 mr-4 text-gray-400"
+              className="pl-2 text-left text-gray-400 w-full"
               readOnly
             >
               No, I don't
@@ -55,7 +54,7 @@ const Step2 = ({ setFormData, formData }) => {
           </button>
           <button
             className="pl-2 border w-full bg-white mx-auto border-gray-400 rounded flex items-center h-10 cursor-pointer"
-            onClick={() => setFormData({...formData,isRecipt:"yes"})}
+            onClick={() => setFormData({ ...formData, isRecipt: "yes" })}
           >
             <input
               type="radio"
@@ -66,7 +65,7 @@ const Step2 = ({ setFormData, formData }) => {
               defaultChecked={formData?.isRecipt === "yes"}
               required
             />
-            <label htmlFor="yesRecipt" className="ml-2 mr-4 text-gray-400">
+            <label htmlFor="yesRecipt" className="pl-2 text-left text-gray-400 w-full">
               Yes, I hade receipts
             </label>
           </button>
@@ -90,13 +89,37 @@ const Step2 = ({ setFormData, formData }) => {
                     onChange={(e) => handleReciptInputChange(e, i)}
                     name="receiptName"
                   >
-                    <option defaultValue="nothing" disabled selected={receipt.receiptName === ""}>
+                    <option
+                      defaultValue="nothing"
+                      disabled
+                      selected={receipt.receiptName === ""}
+                    >
                       Select a Recipt
                     </option>
-                    <option value="meal" selected={receipt.receiptName === "meal"}>Meal</option>
-                    <option value="accommodation" selected={receipt.receiptName === "accommodation"}>Accommodation</option>
-                    <option value="transportation" selected={receipt.receiptName === "transportation"}>Transportation</option>
-                    <option value="others" selected={receipt.receiptName === "others"}>Others</option>
+                    <option
+                      value="meal"
+                      selected={receipt.receiptName === "meal"}
+                    >
+                      Meal
+                    </option>
+                    <option
+                      value="accommodation"
+                      selected={receipt.receiptName === "accommodation"}
+                    >
+                      Accommodation
+                    </option>
+                    <option
+                      value="transportation"
+                      selected={receipt.receiptName === "transportation"}
+                    >
+                      Transportation
+                    </option>
+                    <option
+                      value="others"
+                      selected={receipt.receiptName === "others"}
+                    >
+                      Others
+                    </option>
                   </select>
                   <div className="p-2 border w-full bg-white mx-auto border-gray-400 rounded-r-md flex justify-end items-center h-10">
                     <span className="text-gray-400 ">$</span>
@@ -106,7 +129,11 @@ const Step2 = ({ setFormData, formData }) => {
                       className="ml-1 w-full border-none outline-none"
                       placeholder="120"
                       onChange={(e) => handleReciptInputChange(e, i)}
-                      value={receipt.receiptAmount === "" ? "" : receipt.receiptAmount}
+                      value={
+                        receipt.receiptAmount === ""
+                          ? ""
+                          : receipt.receiptAmount
+                      }
                     />
                   </div>
                 </div>
@@ -134,21 +161,24 @@ const Step2 = ({ setFormData, formData }) => {
         </div>
       )}
       <div className="mt-10 bg-[#e8eef1] rounded-lg p-7">
-        <h4 className="font-medium mb-2 text-lg text-gray-700">
+        <h4 className="font-medium mb-2 text-lg text-blue-950">
           Communication With Airlines
         </h4>
         <div className="grid grid-cols-1 items-center gap-3 my-5 ">
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
-              Email Communication Summary
+              Email Communication Summary{" "}
+              <span className="text-red-500">*</span>
             </label>
             <textarea
-            defaultValue={formData?.emailSummary}
-              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${!formData?.airLineName && "cursor-not-allowed"
-                }`}
+              defaultValue={formData?.emailSummary}
+              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${
+                !formData?.airLineName && "cursor-not-allowed"
+              }`}
+              required
               rows={10}
               cols={30}
               readOnly={!formData?.airLineName}
@@ -164,15 +194,17 @@ const Step2 = ({ setFormData, formData }) => {
         <div className="grid grid-cols-1 items-center gap-3 my-5 ">
           <div>
             <label
-              className="block font-medium mb-2 text-gray-700"
+              className="block font-medium mb-2 text-blue-950"
               htmlFor="name"
             >
-              Message Exchange Summary
+              Message Exchange Summary <span className="text-red-500">*</span>
             </label>
             <textarea
               defaultValue={formData?.messageSummary}
-              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${!formData?.airLineName && "cursor-not-allowed"
-                }`}
+              className={`w-full p-3 bg-white mx-auto border border-gray-400 rounded h-28 ${
+                !formData?.airLineName && "cursor-not-allowed"
+              }`}
+              required
               rows={10}
               cols={30}
               readOnly={!formData?.airLineName}

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { AiOutlineStar } from "react-icons/ai";
 import { toast } from "react-hot-toast";
+import { AiOutlineStar } from "react-icons/ai";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Contact = () => {
@@ -33,6 +33,7 @@ const Contact = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("Thanks for Your Feedback");
+        form.reset();
       })
       .catch((error) => console.log("error: ", error));
   };
