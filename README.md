@@ -26,7 +26,7 @@ Hosted on netlify
 
 # 📗 Project Purpose
 
-### 1. Generate a claim letter.
+### 1. To generate a claim letter for getting a refund for a disrupted flight.
 ### 2. Send it to the relevant authorities.
 ### 3. Enjoy the Benefits.
 
