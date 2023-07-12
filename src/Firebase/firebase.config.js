@@ -5,12 +5,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB5WDhNNlhkoZ-iF416vVnKbPsFGwUkXaw",
-  authDomain: "refund-for-my-disrupted-flight.firebaseapp.com",
-  projectId: "refund-for-my-disrupted-flight",
-  storageBucket: "refund-for-my-disrupted-flight.appspot.com",
-  messagingSenderId: "611000664713",
-  appId: "1:611000664713:web:38ad4e36dc4f29422bbc58"
+  apiKey: "AIzaSyDHJVz_340CyWRhHO8E5NVEWgRbk6I471Y",
+  authDomain: "refund-disrupted-flight.firebaseapp.com",
+  projectId: "refund-disrupted-flight",
+  storageBucket: "refund-disrupted-flight.appspot.com",
+  messagingSenderId: "1098333171762",
+  appId: "1:1098333171762:web:ba609a2bfa468c17070c2b",
+  measurementId: "G-T5J3LH51YY",
 };
 
 // Initialize Firebase
