@@ -38,7 +38,7 @@ Hosted on netlify
 
 #### A simple page where it will have a form title and 2 step form
 
-![App Screenshot](https://i.ibb.co/dk5m2J3/2.png)
+![App Screenshot](https://i.ibb.co/Cb1v7S5/2.png)
 
 #### After filling all form fields, Clicking on submit button AI would analyze the flight details and generate an automated claim assessment.
 
@@ -71,7 +71,7 @@ Hosted on netlify
 Clone The Development Branch follow this code 
 
 ```bash
-  git clone -b development https://github.com/nisharga/refund-for-my-disrupted-flight.git
+  git clone https://github.com/nisharga/refund-for-my-disrupted-flight.git
 ```
 
 Then change directory to the folder by
