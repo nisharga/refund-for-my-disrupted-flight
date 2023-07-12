@@ -38,7 +38,7 @@ Hosted on netlify
 
 #### A simple page where it will have a form title and 2 step form
 
-![App Screenshot](https://i.ibb.co/dk5m2J3/1.png)
+![App Screenshot](https://i.ibb.co/dk5m2J3/2.png)
 
 #### After filling all form fields, Clicking on submit button AI would analyze the flight details and generate an automated claim assessment.
 
